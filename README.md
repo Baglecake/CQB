@@ -229,29 +229,49 @@ We welcome contributions! Areas of interest:
 
 See `CONTRIBUTING.md` for guidelines.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - Built on [vLLM](https://github.com/vllm-project/vllm) for efficient LLM inference
 - Inspired by research in collective intelligence and epistemic democracy
 - Thanks to the open-source AI community for model development
+- University of Toronto for supporting open research initiatives
 
-## 📚 Citation
 
-If you use CQB in your research, please cite:
+## 📄 License & Attribution
 
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for complete details.
+
+### **Citation Information**
 ```bibtex
-@software{central_query_brain,
-  title={Central Query Brain: Dynamic Multi-Agent Collaboration for AI Reasoning},
-  author={Coburn, Del},
-  year={2024},
-  url={https://github.com/yourusername/central-query-brain}
+@software{emile_local_ai,
+  author = {Del Coburn},
+  title = {Émile-1: Personal Local AI Assistant},
+  year = {2025},
+  institution = {University of Toronto},
+  url = {https://github.com/Baglecake/Emile-1}
 }
 ```
 
 ---
 
+## 👨‍💻 Author
+
+**Del Coburn**  
+University of Toronto  
+📧 del.coburn@mail.utoronto.ca  
+
+*For project-related questions, please use GitHub Issues or Discussions. For other inquiries, feel free to reach out via email.*
+
+### **Acknowledgments**
+- The open-source AI community for inspiration and foundational models
+- University of Toronto for supporting open research initiatives
+
+---
+
+**Made with ❤️ for democratizing AI access**
+
 **Built for researchers, decision-makers, and AI developers who need sophisticated multi-agent reasoning capabilities.**
+
+**Version**: v1.0 | **Last Updated**: 2025-07-29 | **Compatibility**: Ollama 0.1+, Streamlit 1.28+
+
+---
