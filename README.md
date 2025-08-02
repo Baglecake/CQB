@@ -262,10 +262,6 @@ University of Toronto
 
 *For project-related questions, please use GitHub Issues or Discussions. For other inquiries, feel free to reach out via email.*
 
-### **Acknowledgments**
-- The open-source AI community for inspiration and foundational models
-- University of Toronto for supporting open research initiatives
-
 ---
 **Built for researchers, decision-makers, and AI developers who need sophisticated multi-agent reasoning capabilities.**
 
