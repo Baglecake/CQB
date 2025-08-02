@@ -267,10 +267,9 @@ University of Toronto
 - University of Toronto for supporting open research initiatives
 
 ---
+**Built for researchers, decision-makers, and AI developers who need sophisticated multi-agent reasoning capabilities.**
 
 **Made with ❤️ for democratizing AI access**
-
-**Built for researchers, decision-makers, and AI developers who need sophisticated multi-agent reasoning capabilities.**
 
 **Version**: v1.0 | **Last Updated**: 2025-07-29 | **Compatibility**: Ollama 0.1+, Streamlit 1.28+
 
