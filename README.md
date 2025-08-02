@@ -1,6 +1,3 @@
-# CQB
-Central Query Brain - Generates collaborative agent teams to handles queries across domains
-
 # Central Query Brain (CQB)
 
 **A modular AI reasoning engine for dynamic multi-agent collaboration and epistemic synthesis**
@@ -12,6 +9,7 @@ Central Query Brain - Generates collaborative agent teams to handles queries acr
 [![Research](https://img.shields.io/badge/Type-Research-brightgreen.svg)](https://github.com)
 
 ## Overview
+**v1.0**  
 
 Central Query Brain (CQB) is a domain-agnostic AI orchestration system that dynamically generates expert agents and coordinates their collaborative reasoning. Unlike fixed multi-agent systems, CQB analyzes any query and creates appropriate specialists on-demand, then facilitates structured deliberation to produce synthesized insights.
 
