@@ -271,6 +271,6 @@ University of Toronto
 
 **Made with ❤️ for democratizing AI access**
 
-**Version**: v1.0 | **Last Updated**: 2025-07-29 | **Compatibility**: Ollama 0.1+, Streamlit 1.28+
+**Version**: v1.0 | **Last Updated**: 2025-08-02 |
 
 ---
