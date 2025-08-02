@@ -75,22 +75,22 @@ central-query-brain/
 ├── LICENSE                      # MIT License
 ├── requirements.txt             # Python dependencies
 ├── config.yaml                  # Model configurations
-├── cqb_framework.py            # Core CQB agent generation engine
-├── collaboration_module.py     # Multi-round collaboration orchestrator
-├── examples/                   # Example scenarios and use cases
-│   ├── techflow_crisis.py     # AI startup crisis simulation
-│   ├── medical_consultation.py # Medical case analysis
-│   ├── business_strategy.py   # Strategic planning scenario
-│   └── climate_policy.py      # Policy analysis example
-├── outputs/                    # Generated collaboration results
-│   └── sample_outputs/        # Example JSON outputs
-├── docs/                       # Documentation
-│   ├── architecture.md        # System architecture details
-│   ├── agent_types.md         # Agent specification guide
-│   └── api_reference.md       # Complete API documentation
-└── tests/                      # Test suite
-    ├── test_cqb_core.py       # Core functionality tests
-    └── test_collaboration.py  # Collaboration module tests
+├── cqb_framework.py             # Core CQB agent generation engine
+├── collaboration_module.py      # Multi-round collaboration orchestrator
+├── examples/                    # Example scenarios and use cases
+│   ├── techflow_crisis.py       # AI startup crisis simulation
+│   ├── medical_consultation.py  # Medical case analysis
+│   ├── business_strategy.py     # Strategic planning scenario
+│   └── climate_policy.py        # Policy analysis example
+├── outputs/                     # Generated collaboration results
+│   └── sample_outputs/          # Example JSON outputs
+├── docs/                        # Documentation
+│   ├── architecture.md          # System architecture details
+│   ├── agent_types.md           # Agent specification guide
+│   └── api_reference.md         # Complete API documentation
+└── tests/                       # Test suite
+    ├── test_cqb_core.py         # Core functionality tests
+    └── test_collaboration.py    # Collaboration module tests
 ```
 
 ## 🎯 Example Scenarios
