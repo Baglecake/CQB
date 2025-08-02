@@ -248,7 +248,7 @@ If you use CQB in your research, please cite:
 ```bibtex
 @software{central_query_brain,
   title={Central Query Brain: Dynamic Multi-Agent Collaboration for AI Reasoning},
-  author={[Your Name]},
+  author={Coburn, Del},
   year={2024},
   url={https://github.com/yourusername/central-query-brain}
 }
