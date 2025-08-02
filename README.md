@@ -245,7 +245,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```bibtex
 @software{CQB,
   author = {Del Coburn},
-  title = {Émile-1: Personal Local AI Assistant},
+  title = {CQB: Central Query Brain},
   year = {2025},
   institution = {University of Toronto},
   url = {https://github.com/Baglecake/CQB}
