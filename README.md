@@ -243,12 +243,12 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ### **Citation Information**
 ```bibtex
-@software{emile_local_ai,
+@software{CQB,
   author = {Del Coburn},
   title = {Émile-1: Personal Local AI Assistant},
   year = {2025},
   institution = {University of Toronto},
-  url = {https://github.com/Baglecake/Emile-1}
+  url = {https://github.com/Baglecake/CQB}
 }
 ```
 
