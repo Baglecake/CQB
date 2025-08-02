@@ -1,0 +1,37 @@
+# Central Query Brain (CQB) Requirements
+# Core dependencies for multi-agent AI reasoning system
+
+# Model Inference
+vllm>=0.4.0
+torch>=2.1.0
+transformers>=4.35.0
+accelerate>=0.20.0
+
+# Configuration and Data
+pyyaml>=6.0
+dataclasses-json>=0.6.0
+
+# GPU Support
+nvidia-ml-py3>=12.535.0
+
+# Utilities
+numpy>=1.24.0
+pandas>=2.0.0
+tqdm>=4.65.0
+
+# Optional: Quantization Support
+auto-gptq>=0.7.0
+autoawq>=0.2.0
+
+# Development and Testing (optional)
+pytest>=7.0.0
+black>=23.0.0
+isort>=5.12.0
+
+# Documentation (optional)
+mkdocs>=1.5.0
+mkdocs-material>=9.0.0
+
+# Jupyter for examples (optional)
+jupyter>=1.0.0
+ipywidgets>=8.0.0
