@@ -8,6 +8,8 @@ Central Query Brain - Generates collaborative agent teams to handles queries acr
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![vLLM](https://img.shields.io/badge/Powered%20by-vLLM-green.svg)](https://github.com/vllm-project/vllm)
+[![University of Toronto](https://img.shields.io/badge/University%20of-Toronto-003F7F.svg)](https://www.utoronto.ca/)
+[![Research](https://img.shields.io/badge/Type-Research-brightgreen.svg)](https://github.com)
 
 ## Overview
 
