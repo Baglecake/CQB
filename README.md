@@ -9,7 +9,7 @@
 [![Research](https://img.shields.io/badge/Type-Research-brightgreen.svg)](https://github.com)
 
 ## Overview
-**v1.1 - Modular Reasoning Architecture**  
+**v1.2 - Modular Reasoning Architecture**  
 
 Central Query Brain (CQB) is a domain-agnostic AI orchestration system that dynamically generates expert agents and coordinates their reasoning through **pluggable modules**. Unlike fixed multi-agent systems, CQB analyzes any query, creates appropriate specialists on-demand, then facilitates structured deliberation through interchangeable reasoning modules.
 
@@ -23,7 +23,12 @@ CQB separates **agent generation** from **reasoning orchestration**, enabling:
 
 ## 📚 Version History
 
-### v1.1 (Current) - Modular Reasoning Architecture
+### v1.2 (CURRENT) - Model License Integration
+- ✨ **NEW**: Model licensing automation for citation compliance
+- 🔧 **Enhanced**: Each module automatically exports license metadata in json files
+- 🔧 **MAINTAINED**: All features of earlier versions
+
+### v1.1 - Modular Reasoning Architecture
 - ✨ **NEW**: Adversarial Debate Module for Red Team vs Blue Team analysis
 - ✨ **NEW**: True plug-in architecture - modules are completely interchangeable
 - ✨ **NEW**: Security audit capabilities with adversarial reasoning
@@ -345,6 +350,81 @@ We welcome contributions! Areas of interest:
 - Performance optimizations
 
 See `CONTRIBUTING.md` for guidelines.
+
+## 📋 License Compliance & Model Registry
+
+CQB includes comprehensive license tracking to ensure compliance when using third-party AI models.
+
+### 🔒 **Automatic License Compliance**
+
+Every model used in CQB is automatically tracked for license compliance:
+
+```python
+# ✅ Automatic compliance checking at startup
+cqb = initialize_cqb()
+# Displays license status for all configured models
+
+# ✅ All JSON exports include license manifest
+json_data = collab_module.export_collaboration_json(session_id)
+print(json_data['license_manifest'])
+```
+
+### 📋 **Model Registry Management**
+
+Add new models to `licenses.yaml`:
+
+```yaml
+"organization/model-name":
+  license: "License Name (e.g., Apache-2.0, MIT, Gemma Terms of Use)"
+  repo: "https://huggingface.co/organization/model-name"
+  description: "Human readable description"
+  license_file: "filename.txt"  # Optional: local license file
+```
+
+### 🚨 **Compliance Warnings**
+
+CQB will warn about unlicensed models but continue operation:
+
+```
+⚠️ Model 'new/model' not found in license registry!
+🔧 Please add it to licenses.yaml before use
+📥 Loading new-model... # Continues with warning
+```
+
+### 📁 **License File Organization**
+
+```
+central-query-brain/
+├── licenses.yaml              # Model license registry
+├── license_manager.py         # License compliance system
+└── third_party_licenses/      # Full license texts
+    ├── apache_2_0.txt
+    ├── gemma_license.txt
+    ├── mit_license.txt
+    └── ...
+```
+
+### ⚖️ **Legal Compliance Notes**
+
+- **Registry Requirement**: All models must be registered before use
+- **Redistribution**: Users must comply with original model licenses
+- **Commercial Use**: Review individual model licenses for commercial restrictions
+- **Attribution**: Full license details included in all JSON exports
+
+### 🔧 **For Developers**
+
+```python
+# Check specific model compliance
+from license_manager import validate_model, get_license_info
+
+is_compliant = validate_model("Qwen/Qwen3-8B")
+license_info = get_license_info("Qwen/Qwen3-8B")
+
+# Get complete session manifest
+manifest = cqb.get_license_manifest()
+```
+
+The license system ensures full transparency and compliance while maintaining CQB's ease of use.
 
 ## 🙏 Acknowledgments
 
