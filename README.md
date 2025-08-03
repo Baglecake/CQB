@@ -124,17 +124,15 @@ central-query-brain/
 ├── LICENSE                           # MIT License
 ├── requirements.txt                  # Python dependencies
 v1.2/
-│   ├── config.yaml                   # Model configurations
-│   ├── cqb_framework.py              # 🧠 Core CQB agent generation engine
-│   ├──collaboration_module.py        # 🤝 Collaborative reasoning orchestrator
-│   ├── adversarial_debate_module.py  # ⚔️ Adversarial debate orchestrator
+├── config.yaml                       # Model configurations
+├── cqb_framework.py                  # 🧠 Core CQB agent generation engine
+├── collaboration_module.py           # 🤝 Collaborative reasoning orchestrator
+├── adversarial_debate_module.py      # ⚔️ Adversarial debate orchestrator
 examples/                             # Example scenarios and use cases
-│   ├── run_collaboration.py          # Collaborative reasoning examples
-│   ├── run_debate.py                 # 🆕 Adversarial debate examples
-│   ├── techflow_crisis.py            # AI startup crisis simulation
-│   ├── medical_consultation.py       # Medical case analysis
-│   ├── security_audit_debate.py      # 🆕 Red Team vs Blue Team security audit
-│   └── climate_policy.py             # Policy analysis example
+├── techflow_crisis.py                # AI startup crisis simulation (Collaborative)
+├── medical_consultation.py           # Medical case analysis (Collaborative)
+├── security_audit_debate.py          # 🆕 Red Team vs Blue Team security audit (Adversarial)
+├── climate_policy.py                 # Policy analysis example (Collaborative)
 outputs/                              # Generated analysis results
 │   └── sample_outputs/               # Example JSON outputs
 docs/                                 # Documentation
@@ -393,6 +391,7 @@ CQB will warn about unlicensed models but continue operation:
 
 ```
 central-query-brain/
+v1.2/
 ├── licenses.yaml              # Model license registry
 ├── license_manager.py         # License compliance system
 └── third_party_licenses/      # Full license texts
