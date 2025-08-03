@@ -9,19 +9,42 @@
 [![Research](https://img.shields.io/badge/Type-Research-brightgreen.svg)](https://github.com)
 
 ## Overview
-**v1.0**  
+**v1.1 - Modular Reasoning Architecture**  
 
-Central Query Brain (CQB) is a domain-agnostic AI orchestration system that dynamically generates expert agents and coordinates their collaborative reasoning. Unlike fixed multi-agent systems, CQB analyzes any query and creates appropriate specialists on-demand, then facilitates structured deliberation to produce synthesized insights.
+Central Query Brain (CQB) is a domain-agnostic AI orchestration system that dynamically generates expert agents and coordinates their reasoning through **pluggable modules**. Unlike fixed multi-agent systems, CQB analyzes any query, creates appropriate specialists on-demand, then facilitates structured deliberation through interchangeable reasoning modules.
 
-**Key Innovation**: True epistemic labor division - agents with different reasoning styles (conservative vs innovative) and specialties collaborate through multiple rounds of structured discourse.
+**Key Innovation**: True epistemic labor division with **modular reasoning patterns** - the same dynamically-generated agents can engage in collaborative synthesis, adversarial debate, or any custom reasoning framework through plug-in modules.
+
+### 🔌 **Modular Architecture**
+CQB separates **agent generation** from **reasoning orchestration**, enabling:
+- **Central Hub**: `cqb_framework.py` generates domain-appropriate experts for any query
+- **Plug-in Modules**: Independent reasoning orchestrators that use the same agent pool
+- **Flexible Deployment**: Switch between collaboration, debate, or custom reasoning patterns seamlessly
+
+## 📚 Version History
+
+### v1.1 (Current) - Modular Reasoning Architecture
+- ✨ **NEW**: Adversarial Debate Module for Red Team vs Blue Team analysis
+- ✨ **NEW**: True plug-in architecture - modules are completely interchangeable
+- ✨ **NEW**: Security audit capabilities with adversarial reasoning
+- 🔧 **Enhanced**: Context window management for longer deliberations
+- 🔧 **Enhanced**: JSON export with comprehensive debate transcripts
+- 📖 **Added**: Multiple reasoning patterns demonstrated
+
+### v1.0 - Foundation Release  
+- 🚀 **Core**: Dynamic agent generation from query analysis
+- 🚀 **Core**: Dual-model architecture (conservative/innovative agents)
+- 🚀 **Core**: Collaborative reasoning with synthesis
+- 🚀 **Core**: Domain-agnostic operation across multiple fields
+- 🚀 **Core**: Rich JSON export with conversation transcripts
 
 ## 🧠 Core Features
 
 - **Dynamic Agent Generation**: Analyzes queries to determine needed expertise and creates appropriate specialist agents
 - **Dual-Model Architecture**: Conservative (analytical) and innovative (creative) agents using different model configurations  
-- **Structured Collaboration**: Multi-round deliberation with context building and synthesis
-- **Domain Agnostic**: Works across medical, business, technical, creative, and analytical domains
-- **Modular Design**: Independent modules can plug into the CQB agent generation service
+- **🆕 Modular Reasoning Patterns**: Choose between collaborative synthesis, adversarial debate, or custom orchestration
+- **🆕 Plug-in Architecture**: Independent modules that leverage the same agent generation service
+- **Domain Agnostic**: Works across medical, business, technical, creative, security, and analytical domains
 - **Rich Output**: JSON export with complete conversation transcripts, agent details, and performance metrics
 
 ## 🚀 Quick Start
@@ -40,8 +63,9 @@ cd central-query-brain
 pip install -r requirements.txt
 ```
 
-### Basic Usage
+### 🔌 **Choose Your Reasoning Mode**
 
+#### Collaborative Reasoning
 ```python
 from cqb_framework import initialize_cqb
 from collaboration_module import AgentCollaborationModule
@@ -49,53 +73,80 @@ from collaboration_module import AgentCollaborationModule
 # Initialize CQB
 cqb = initialize_cqb()
 
-# Create collaboration module
+# Plug in collaboration module
 collab_module = AgentCollaborationModule(cqb)
 
-# Run analysis on any query
+# Run collaborative analysis
 session_id = collab_module.collaborate_on_query(
     "How should we approach climate change mitigation in urban environments?",
     max_agents=6,
     collaboration_rounds=3
 )
 
-# Get results
 summary = collab_module.get_collaboration_summary(session_id)
 print(summary)
+```
 
-# Export detailed JSON
-json_data = collab_module.export_collaboration_json(session_id)
+#### 🆕 **Adversarial Debate Reasoning**
+```python
+from cqb_framework import initialize_cqb
+from adversarial_debate_module import AdversarialDebateModule
+
+# Initialize CQB  
+cqb = initialize_cqb()
+
+# Plug in adversarial debate module
+debate_module = AdversarialDebateModule(cqb)
+
+# Run adversarial analysis
+session_id = debate_module.run_debate_on_query(
+    "Should AI development be regulated by government agencies?",
+    max_agents=7,
+    debate_rounds=3,
+    position_a="FOR government regulation",
+    position_b="AGAINST government regulation"
+)
+
+summary = debate_module.get_debate_summary(session_id)
+print(summary)
 ```
 
 ## 📁 Project Structure
 
 ```
 central-query-brain/
-├── README.md                    # This file
-├── LICENSE                      # MIT License
-├── requirements.txt             # Python dependencies
-├── config.yaml                  # Model configurations
-├── cqb_framework.py             # Core CQB agent generation engine
-├── collaboration_module.py      # Multi-round collaboration orchestrator
-├── examples/                    # Example scenarios and use cases
-│   ├── techflow_crisis.py       # AI startup crisis simulation
-│   ├── medical_consultation.py  # Medical case analysis
-│   ├── business_strategy.py     # Strategic planning scenario
-│   └── climate_policy.py        # Policy analysis example
-├── outputs/                     # Generated collaboration results
-│   └── sample_outputs/          # Example JSON outputs
-├── docs/                        # Documentation
-│   ├── architecture.md          # System architecture details
-│   ├── agent_types.md           # Agent specification guide
-│   └── api_reference.md         # Complete API documentation
-└── tests/                       # Test suite
-    ├── test_cqb_core.py         # Core functionality tests
-    └── test_collaboration.py    # Collaboration module tests
+├── README.md                     # This file
+├── LICENSE                       # MIT License
+├── requirements.txt              # Python dependencies
+├── config.yaml                   # Model configurations
+├── cqb_framework.py              # 🧠 Core CQB agent generation engine
+├── collaboration_module.py       # 🤝 Collaborative reasoning orchestrator
+├── adversarial_debate_module.py  # ⚔️ Adversarial debate orchestrator
+├── examples/                     # Example scenarios and use cases
+│   ├── run_collaboration.py      # Collaborative reasoning examples
+│   ├── run_debate.py             # 🆕 Adversarial debate examples
+│   ├── techflow_crisis.py        # AI startup crisis simulation
+│   ├── medical_consultation.py   # Medical case analysis
+│   ├── security_audit_debate.py  # 🆕 Red Team vs Blue Team security audit
+│   └── climate_policy.py         # Policy analysis example
+├── outputs/                      # Generated analysis results
+│   └── sample_outputs/           # Example JSON outputs
+├── docs/                         # Documentation
+│   ├── architecture.md           # System architecture details
+│   ├── agent_types.md            # Agent specification guide
+│   └── api_reference.md          # Complete API documentation
+└── tests/                        # Test suite
+    ├── test_cqb_core.py          # Core functionality tests
+    ├── test_collaboration.py     # Collaboration module tests
+    └── test_adversarial.py       # 🆕 Adversarial debate tests
 ```
 
-## 🎯 Example Scenarios
+## 🎯 Reasoning Patterns & Examples
 
-### 1. Crisis Management
+### 🤝 **Collaborative Reasoning**
+*Agents work together, build on ideas, synthesize collective wisdom*
+
+#### Crisis Management
 ```python
 crisis_scenario = """
 TechFlow AI startup faces simultaneous technical bias issues, 
@@ -106,9 +157,9 @@ problems. Develop a comprehensive crisis response strategy.
 session_id = collab_module.collaborate_on_query(crisis_scenario)
 ```
 
-**Generated Agents**: Crisis Management Expert, AI Ethics Specialist, Regulatory Compliance Advisor, Business Strategy Consultant, Talent Retention Specialist, Technical Risk Analyst
+**Generated Agents**: Crisis Management Expert, AI Ethics Specialist, Regulatory Compliance Advisor, Business Strategy Consultant, Talent Retention Specialist
 
-### 2. Medical Case Analysis
+#### Medical Case Analysis
 ```python
 medical_case = """
 45-year-old presents with acute chest pain, dyspnea, and 
@@ -119,58 +170,118 @@ Develop differential diagnosis and treatment approach.
 session_id = collab_module.collaborate_on_query(medical_case)
 ```
 
-**Generated Agents**: Emergency Medicine Physician, Cardiologist, Internal Medicine Specialist, Critical Care Expert, Diagnostic Imaging Specialist
+**Generated Agents**: Emergency Medicine Physician, Cardiologist, Internal Medicine Specialist, Critical Care Expert
 
-### 3. Strategic Planning
+### ⚔️ **Adversarial Debate Reasoning**
+*Agents split into opposing teams, argue positions, compete through superior reasoning*
+
+#### 🆕 **Security Audit (Red Team vs Blue Team)**
 ```python
-strategy_query = """
-Mid-size manufacturing company considering digital transformation. 
-Evaluate approaches, risks, and implementation roadmap for 
-Industry 4.0 adoption while maintaining operational continuity.
+security_audit = """
+Conduct adversarial security audit of autonomous drone delivery network.
+Identify critical vulnerabilities and evaluate proposed mitigations.
 """
 
-session_id = collab_module.collaborate_on_query(strategy_query)
+session_id = debate_module.run_debate_on_query(
+    security_audit,
+    position_a="RED TEAM - Expose Vulnerabilities", 
+    position_b="BLUE TEAM - Defend with Mitigations"
+)
 ```
 
-**Generated Agents**: Digital Transformation Consultant, Operations Analyst, Technology Architect, Change Management Expert, Financial Risk Assessor
+**Generated Teams**: 
+- **Red Team**: Cybersecurity Analyst, Physical Security Expert, Social Engineering Specialist
+- **Blue Team**: Security Architect, Risk Management Expert, Compliance Specialist  
+- **Judge**: Security Auditor
+
+#### Policy Analysis
+```python
+policy_debate = """
+Should we prioritize Mars colonization or Earth climate solutions?
+"""
+
+session_id = debate_module.run_debate_on_query(
+    policy_debate,
+    position_a="FOR Mars colonization priority",
+    position_b="FOR Earth climate priority"
+)
+```
+
+**Generated Teams**:
+- **Team A**: Aerospace Engineer, Planetary Scientist, Technology Futurist
+- **Team B**: Climate Scientist, Environmental Policy Expert, Social Justice Advocate
+- **Judge**: Strategic Policy Analyst
 
 ## 🏗️ Architecture
 
+### 🧠 **Central Hub Design**
+```
+┌─────────────────────────────────────────────────────────┐
+│                CQB Framework                            │
+│  ┌─────────────────────────────────────────────────┐    │
+│  │        Dynamic Agent Generation                 │    │
+│  │  • Query Analysis                               │    │
+│  │  • Specialist Selection                         │    │
+│  │  • Dual-Model Assignment                        │    │
+│  │  • Agent Pool Creation                          │    │
+│  └─────────────────────────────────────────────────┘    │
+└─────────────────┬───────────────────────────────────────┘
+                  │ Agent Pool
+      ┌───────────┴───────────┐
+      │                       │
+┌─────▼─────┐           ┌─────▼─────┐
+│Collaboration│           │Adversarial│
+│  Module    │           │  Debate   │
+│           │           │  Module   │
+│🤝 Synthesis│           │⚔️ Judgment │
+└───────────┘           └───────────┘
+```
+
 ### Core Components
 
-1. **CQB Framework** (`cqb_framework.py`)
+1. **🧠 CQB Framework** (`cqb_framework.py`)
    - Dynamic query analysis and agent specification
    - Dual-model management (conservative/innovative)
-   - Agent generation and persistence
-   - Session management
+   - Agent generation and session management
+   - **Serves as central hub for all reasoning modules**
 
-2. **Collaboration Module** (`collaboration_module.py`)
+2. **🤝 Collaboration Module** (`collaboration_module.py`)
    - Multi-round deliberation orchestration
-   - Context building and synthesis
-   - JSON export and result formatting
+   - Context building and collaborative synthesis
+   - Consensus-driven reasoning patterns
 
-3. **Agent System**
-   - Conservative agents: Analytical, systematic, evidence-based
-   - Innovative agents: Creative, forward-thinking, exploratory
-   - Persistent conversation history and learning
+3. **🆕 ⚔️ Adversarial Debate Module** (`adversarial_debate_module.py`)
+   - Red Team vs Blue Team orchestration
+   - Competitive reasoning with judge evaluation
+   - Confrontational analysis patterns
 
-### Collaboration Flow
+### 🔌 **Plug-in Pattern**
+Each module follows the same interface:
+```python
+# 1. Connect to CQB hub
+module = ReasoningModule(cqb_brain)
 
+# 2. Request agents for query  
+session_id = cqb_brain.analyze_query_and_generate_agents(query)
+agents = cqb_brain.get_agents(session_id)
+
+# 3. Apply unique reasoning orchestration
+result = module.orchestrate_reasoning(agents, query)
 ```
-Query → Analysis → Agent Generation → Round 1 (Initial) → Round 2 (Refinement) → Round 3 (Synthesis) → Final Output
-```
 
-Each round builds context from previous discussions, enabling true collaborative reasoning.
+## 📊 Output Formats
 
-## 📊 Output Format
-
-CQB generates comprehensive JSON outputs containing:
-
+### Collaborative Output
 - **Query Analysis**: Domain classification, complexity assessment
-- **Agent Details**: Specialties, reasoning styles, model assignments
-- **Round Transcripts**: Complete conversation history with timestamps
+- **Agent Details**: Specialties, reasoning styles, model assignments  
+- **Round Transcripts**: Complete conversation history with context building
 - **Synthesis Results**: Unified expert recommendations
-- **Performance Metrics**: Response times, participation rates, quality scores
+
+### 🆕 **Adversarial Output**
+- **Team Assignments**: Red Team vs Blue Team with judge
+- **Debate Transcripts**: Attack/defense exchanges with escalation
+- **Judge Evaluations**: Round-by-round assessment of arguments
+- **Final Verdict**: Winning position with comprehensive reasoning
 
 ## 🔧 Configuration
 
@@ -183,6 +294,7 @@ conservative_model:
   temperature: 0.2
   top_p: 0.7
   max_tokens: 1536
+  max_model_len: 8192  # Extended for longer deliberations
 
 innovative_model:
   name: 'Innovative-Model-Qwen2.5-GPTQ'
@@ -190,40 +302,45 @@ innovative_model:
   temperature: 0.8
   top_p: 0.95
   max_tokens: 1536
-```
-
-### Custom Agent Types
-
-Extend the system by defining custom agent specifications:
-
-```python
-custom_spec = CQBAgentSpec(
-    agent_id="Domain_Expert_1",
-    agent_type="Conservative",
-    specialty="Your Specialty",
-    model_assignment="conservative_model",
-    temperature=0.3,
-    persona="Expert description"
-)
+  max_model_len: 8192  # Extended for longer deliberations
 ```
 
 ## 🧪 Research Applications
 
-CQB is designed for research in:
+CQB v1.1 enables research in:
 
-- **Epistemic Modeling**: How knowledge emerges from collaborative reasoning
-- **Multi-Agent Systems**: Coordination and synthesis in AI teams
-- **Decision Support**: Expert system augmentation for complex problems
-- **Cognitive Simulation**: Modeling human expert collaboration
-- **AI Safety**: Understanding emergent behaviors in AI teams
+- **🆕 Adversarial AI Systems**: Red Team vs Blue Team reasoning patterns
+- **🆕 Modular Reasoning**: Comparison of collaborative vs competitive deliberation
+- **Epistemic Modeling**: How knowledge emerges from different reasoning patterns
+- **Multi-Agent Coordination**: Team dynamics in cooperative vs adversarial settings
+- **Decision Support**: Expert system augmentation with flexible reasoning modes
+- **🆕 Security Analysis**: AI-powered red team/blue team exercises
+- **AI Safety**: Understanding emergent behaviors in different reasoning frameworks
+
+## 🚀 **Getting Started Examples**
+
+### Run Collaborative Analysis
+```bash
+python examples/run_collaboration.py
+```
+
+### 🆕 **Run Adversarial Debate**
+```bash
+python examples/run_debate.py
+```
+
+### 🆕 **Run Security Audit**
+```bash
+python examples/security_audit_debate.py
+```
 
 ## 🤝 Contributing
 
 We welcome contributions! Areas of interest:
 
-- New collaboration patterns and social layers
-- Domain-specific agent templates
-- Evaluation metrics and benchmarks
+- **🆕 New reasoning modules** (consensus building, devil's advocate, etc.)
+- **🆕 Domain-specific orchestration patterns**
+- Enhanced evaluation metrics and benchmarks
 - Integration with external knowledge sources
 - Performance optimizations
 
@@ -236,7 +353,6 @@ See `CONTRIBUTING.md` for guidelines.
 - Thanks to the open-source AI community for model development
 - University of Toronto for supporting open research initiatives
 
-
 ## 📄 License & Attribution
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for complete details.
@@ -245,8 +361,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```bibtex
 @software{CQB,
   author = {Del Coburn},
-  title = {CQB: Central Query Brain},
+  title = {CQB: Central Query Brain - Modular AI Reasoning Engine},
   year = {2025},
+  version = {1.1},
   institution = {University of Toronto},
   url = {https://github.com/Baglecake/CQB}
 }
@@ -265,8 +382,10 @@ University of Toronto
 ---
 **Built for researchers, decision-makers, and AI developers who need sophisticated multi-agent reasoning capabilities.**
 
+**🆕 v1.1: Now with modular reasoning patterns - collaborate or compete, your choice.**
+
 **Made with ❤️ for democratizing AI access**
 
-**Version**: v1.0 | **Last Updated**: 2025-08-02 |
+**Version**: v1.1 | **Last Updated**: 2025-08-02 |
 
 ---
