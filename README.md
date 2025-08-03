@@ -321,7 +321,7 @@ CQB v1.1 enables research in:
 
 ### Run Collaborative Analysis
 ```bash
-python examples/run_collaboration.py
+python examples/clinical_ddx.py
 ```
 
 ### 🆕 **Run Adversarial Debate**
