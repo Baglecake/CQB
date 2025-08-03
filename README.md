@@ -120,30 +120,28 @@ print(summary)
 
 ```
 central-query-brain/
-├── README.md                     # This file
-├── LICENSE                       # MIT License
-├── requirements.txt              # Python dependencies
-├── config.yaml                   # Model configurations
-├── cqb_framework.py              # 🧠 Core CQB agent generation engine
-├── collaboration_module.py       # 🤝 Collaborative reasoning orchestrator
-├── adversarial_debate_module.py  # ⚔️ Adversarial debate orchestrator
-├── examples/                     # Example scenarios and use cases
-│   ├── run_collaboration.py      # Collaborative reasoning examples
-│   ├── run_debate.py             # 🆕 Adversarial debate examples
-│   ├── techflow_crisis.py        # AI startup crisis simulation
-│   ├── medical_consultation.py   # Medical case analysis
-│   ├── security_audit_debate.py  # 🆕 Red Team vs Blue Team security audit
-│   └── climate_policy.py         # Policy analysis example
-├── outputs/                      # Generated analysis results
-│   └── sample_outputs/           # Example JSON outputs
-├── docs/                         # Documentation
-│   ├── architecture.md           # System architecture details
-│   ├── agent_types.md            # Agent specification guide
-│   └── api_reference.md          # Complete API documentation
-└── tests/                        # Test suite
-    ├── test_cqb_core.py          # Core functionality tests
-    ├── test_collaboration.py     # Collaboration module tests
-    └── test_adversarial.py       # 🆕 Adversarial debate tests
+├── README.md                         # This file
+├── LICENSE                           # MIT License
+├── requirements.txt                  # Python dependencies
+v1.2/
+│   ├── config.yaml                   # Model configurations
+│   ├── cqb_framework.py              # 🧠 Core CQB agent generation engine
+│   ├──collaboration_module.py        # 🤝 Collaborative reasoning orchestrator
+│   ├── adversarial_debate_module.py  # ⚔️ Adversarial debate orchestrator
+examples/                             # Example scenarios and use cases
+│   ├── run_collaboration.py          # Collaborative reasoning examples
+│   ├── run_debate.py                 # 🆕 Adversarial debate examples
+│   ├── techflow_crisis.py            # AI startup crisis simulation
+│   ├── medical_consultation.py       # Medical case analysis
+│   ├── security_audit_debate.py      # 🆕 Red Team vs Blue Team security audit
+│   └── climate_policy.py             # Policy analysis example
+outputs/                              # Generated analysis results
+│   └── sample_outputs/               # Example JSON outputs
+docs/                                 # Documentation
+│   ├── architecture.md               # System architecture details
+│   ├── agent_types.md                # Agent specification guide
+│   └── api_reference.md              # Complete API documentation
+
 ```
 
 ## 🎯 Reasoning Patterns & Examples
