@@ -444,7 +444,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
   author = {Del Coburn},
   title = {CQB: Central Query Brain - Modular AI Reasoning Engine},
   year = {2025},
-  version = {1.1},
+  version = {1.2},
   institution = {University of Toronto},
   url = {https://github.com/Baglecake/CQB}
 }
@@ -467,6 +467,6 @@ University of Toronto
 
 **Made with ❤️ for democratizing AI access**
 
-**Version**: v1.1 | **Last Updated**: 2025-08-02 |
+**Version**: v1.2 | **Last Updated**: 2025-08-03 |
 
 ---
