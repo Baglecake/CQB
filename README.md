@@ -128,6 +128,9 @@ v1.2/
 ├── cqb_framework.py                  # 🧠 Core CQB agent generation engine
 ├── collaboration_module.py           # 🤝 Collaborative reasoning orchestrator
 ├── adversarial_debate_module.py      # ⚔️ Adversarial debate orchestrator
+├── licenses.yaml                     # Model license registry
+├── license_manager.py                # License compliance system
+└── third_party_licenses/             # Full license texts
 examples/                             # Example scenarios and use cases
 ├── techflow_crisis.py                # AI startup crisis simulation (Collaborative)
 ├── medical_consultation.py           # Medical case analysis (Collaborative)
@@ -392,6 +395,7 @@ CQB will warn about unlicensed models but continue operation:
 ```
 central-query-brain/
 v1.2/
+├── ...other version files
 ├── licenses.yaml              # Model license registry
 ├── license_manager.py         # License compliance system
 └── third_party_licenses/      # Full license texts
