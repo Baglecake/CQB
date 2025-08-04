@@ -1,5 +1,15 @@
 This directory contains LangExtract components that have been adapted for vllm compatability. Download these components for reuse or use the following snippet to generate your own!
 
+Required:
+
+schema.py
+prompting.py
+inference.py
+data.py
+__init__.py
+
+To generate, use:
+
 ```python
 # =============================================================================
 # STEP 4: Create Required LangExtract Components
