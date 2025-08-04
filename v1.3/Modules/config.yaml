@@ -1,0 +1,44 @@
+conservative_model:
+  name: 'Conservative-Model-Gemma-2-9B-AWQ'
+  model_path: 'hugging-quants/gemma-2-9b-it-AWQ-INT4'
+  quantization: 'awq_marlin'
+  dtype: 'bfloat16'
+  memory_fraction: 0.4
+  temperature: 0.2
+  top_p: 0.7
+  max_tokens: 1536
+  max_model_len: 8192
+  enforce_eager: false
+  max_num_seqs: 2
+
+innovative_model:
+  name: 'Innovative-Model-Qwen3-8B'
+  model_path: 'Qwen/Qwen3-8B'
+  dtype: 'bfloat16'
+  memory_fraction: 0.5
+  temperature: 0.8
+  top_p: 0.7
+  max_tokens: 1536
+  max_model_len: 16384
+  enforce_eager: false
+  max_num_seqs: 2
+
+# NEW: RAO Configuration
+rao_settings:
+  enabled: true                           # Toggle RAO on/off
+  context_filename: 'cqb_framework_rao.txt'  # Default context file
+  max_context_length: 2000               # Context window size
+  fallback_to_query_only: true           # If no context file found
+
+rounds:
+  enable_subspecialist_consultation: true
+  enable_preferential_voting: true
+  enable_symptom_management: true
+  
+evaluation:
+  clinical_recall_threshold: 0.85
+  precision_threshold: 0.80
+  
+synthesis:
+  enable_credibility_weighting: true
+  enable_tempo_scoring: true
