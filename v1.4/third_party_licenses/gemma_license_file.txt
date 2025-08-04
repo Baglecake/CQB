@@ -1,0 +1,21 @@
+Gemma Terms of Use
+
+PLEASE READ THESE TERMS OF USE CAREFULLY. BY USING, COPYING, DISTRIBUTING, 
+OR MAKING MODIFICATIONS TO THE GEMMA MODELS, YOU AGREE TO BE BOUND BY THESE TERMS.
+
+The Gemma models are made available under the Gemma Terms of Use, which is 
+based on the Apache 2.0 license with additional usage restrictions.
+
+Full terms available at: https://ai.google.dev/gemma/terms
+
+Key Points:
+- The models are for research and commercial use
+- You may modify and redistribute the models
+- You must comply with applicable laws
+- Google disclaims warranties and limits liability
+- Additional restrictions may apply for certain use cases
+
+For complete terms, restrictions, and obligations, please review the full 
+license agreement at the URL above before using Gemma models.
+
+Copyright 2024 Google LLC
