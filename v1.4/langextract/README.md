@@ -2,11 +2,11 @@ This directory contains LangExtract components that have been adapted for vllm c
 
 Required:
 
-schema.py  
-prompting.py  
-inference.py  
-data.py  
-__init__.py  
+- schema.py  
+- prompting.py  
+- inference.py  
+- data.py  
+- __init__.py  
 
 To generate, use:
 
