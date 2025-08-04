@@ -12,7 +12,7 @@ To generate, use:
 
 ```python
 # =============================================================================
-# STEP 4: Create Required LangExtract Components
+# Create Required LangExtract Components
 # =============================================================================
 
 # Since we're adapting LangExtract, create the minimal required components
