@@ -18,7 +18,7 @@ Central Query Brain (CQB) implements **Retrieval-Augmented Orchestration (RAO)**
 
 **Key Innovation**: True epistemic labor division with **context-driven team assembly** - the system analyzes your documents to build reasoning teams specifically suited to your domain and requirements.
 
-### 🧠 **RAO vs RAG - Revolutionary Difference**
+### 🧠 **RAO vs RAG - Comparative Difference**
 
 | Aspect | Traditional RAG | CQB's RAO |
 |--------|-----------------|-----------|
