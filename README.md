@@ -7,23 +7,44 @@
 [![vLLM](https://img.shields.io/badge/Powered%20by-vLLM-green.svg)](https://github.com/vllm-project/vllm)
 [![University of Toronto](https://img.shields.io/badge/University%20of-Toronto-003F7F.svg)](https://www.utoronto.ca/)
 [![Research](https://img.shields.io/badge/Type-Research-brightgreen.svg)](https://github.com)
+[![RAO](https://img.shields.io/badge/Architecture-RAO-red.svg)](https://github.com)
 
 ## Overview
-**v1.2 - Modular Reasoning Architecture**  
+**v1.3 - Retrieval-Augmented Orchestration (RAO) Architecture**  
 
-Central Query Brain (CQB) is a domain-agnostic AI orchestration system that dynamically generates expert agents and coordinates their reasoning through **pluggable modules**. Unlike fixed multi-agent systems, CQB analyzes any query, creates appropriate specialists on-demand, then facilitates structured deliberation through interchangeable reasoning modules.
+Central Query Brain (CQB) is the world's first implementation of **Retrieval-Augmented Orchestration (RAO)** - a novel AI architecture that uses context to dynamically build reasoning teams rather than just inform responses. Unlike traditional RAG systems that retrieve information to enhance a single agent's answer, RAO retrieves and analyzes context to determine what kinds of experts are needed and generates a custom team of specialist agents.
 
-**Key Innovation**: True epistemic labor division with **modular reasoning patterns** - the same dynamically-generated agents can engage in collaborative synthesis, adversarial debate, or any custom reasoning framework through plug-in modules.
+**🔥 NEW in v1.3**: **RAO Implementation** - Context-aware agent generation with file-based knowledge integration
+
+**Key Innovation**: True epistemic labor division with **context-driven team assembly** - the system analyzes your documents to build reasoning teams specifically suited to your domain and requirements.
+
+### 🧠 **RAO vs RAG - Revolutionary Difference**
+
+| Aspect | Traditional RAG | CQB's RAO |
+|--------|-----------------|-----------|
+| **Purpose of Retrieval** | Find facts to inform answer | Analyze context to determine expertise needed |
+| **Impact on AI** | Informs single agent response | Shapes entire reasoning team composition |
+| **User Insight** | Black box reasoning | Transparent specialist selection |
+| **Adaptability** | Static reasoning process | Dynamic team based on context |
 
 ### 🔌 **Modular Architecture**
 CQB separates **agent generation** from **reasoning orchestration**, enabling:
-- **Central Hub**: `cqb_framework.py` generates domain-appropriate experts for any query
-- **Plug-in Modules**: Independent reasoning orchestrators that use the same agent pool
+- **Central Hub**: `cqb_framework.py` generates context-aware experts for any query
+- **RAO Context Manager**: `cqb_context_manager.py` analyzes documents to inform team composition
+- **Plug-in Modules**: Independent reasoning orchestrators that leverage context-aware agents
 - **Flexible Deployment**: Switch between collaboration, debate, or custom reasoning patterns seamlessly
 
 ## 📚 Version History
 
-### v1.2 (CURRENT) - Model License Integration
+### v1.3 (CURRENT) - RAO Architecture Implementation
+- 🔥 **NEW**: Retrieval-Augmented Orchestration (RAO) - world's first implementation
+- 🔥 **NEW**: Context-aware agent generation from uploaded documents
+- 🔥 **NEW**: File-based context system (`cqb_framework_rao.txt`)
+- 🔥 **NEW**: Domain-specific specialist selection based on document analysis
+- ✨ **Enhanced**: All existing modules now work with context-aware agents
+- 🔧 **Maintained**: Full backwards compatibility with v1.2 features
+
+### v1.2 - Model License Integration
 - ✨ **NEW**: Model licensing automation for citation compliance
 - 🔧 **Enhanced**: Each module automatically exports license metadata in json files
 - 🔧 **MAINTAINED**: All features of earlier versions
@@ -33,7 +54,6 @@ CQB separates **agent generation** from **reasoning orchestration**, enabling:
 - ✨ **NEW**: True plug-in architecture - modules are completely interchangeable
 - ✨ **NEW**: Security audit capabilities with adversarial reasoning
 - 🔧 **Enhanced**: Context window management for longer deliberations
-- 🔧 **Enhanced**: JSON export with comprehensive debate transcripts
 - 📖 **Added**: Multiple reasoning patterns demonstrated
 
 ### v1.0 - Foundation Release  
@@ -41,10 +61,11 @@ CQB separates **agent generation** from **reasoning orchestration**, enabling:
 - 🚀 **Core**: Dual-model architecture (conservative/innovative agents)
 - 🚀 **Core**: Collaborative reasoning with synthesis
 - 🚀 **Core**: Domain-agnostic operation across multiple fields
-- 🚀 **Core**: Rich JSON export with conversation transcripts
 
 ## 🧠 Core Features
 
+- 🔥 **Retrieval-Augmented Orchestration (RAO)**: World's first implementation - uses context to build reasoning teams
+- 🔥 **Context-Aware Agent Generation**: Analyzes documents to determine needed expertise and creates appropriate specialists
 - **Dynamic Agent Generation**: Analyzes queries to determine needed expertise and creates appropriate specialist agents
 - **Dual-Model Architecture**: Conservative (analytical) and innovative (creative) agents using different model configurations  
 - **🆕 Modular Reasoning Patterns**: Choose between collaborative synthesis, adversarial debate, or custom orchestration
@@ -68,52 +89,72 @@ cd central-query-brain
 pip install -r requirements.txt
 ```
 
-### 🔌 **Choose Your Reasoning Mode**
+### 🔥 **RAO Context-Aware Agent Generation**
 
-#### Collaborative Reasoning
+#### Set Up Context File
+```bash
+# Create your context file (any domain works)
+echo "Your domain-specific context content here..." > v1.3/cqb_framework_rao.txt
+```
+
+#### Enable RAO in Config
+```yaml
+# config.yaml
+rao_settings:
+  enabled: true
+  context_filename: 'cqb_framework_rao.txt'
+  max_context_length: 2000
+  fallback_to_query_only: true
+```
+
+#### Context-Aware Reasoning
 ```python
 from cqb_framework import initialize_cqb
 from collaboration_module import AgentCollaborationModule
 
-# Initialize CQB
+# Initialize CQB with RAO
 cqb = initialize_cqb()
 
-# Plug in collaboration module
-collab_module = AgentCollaborationModule(cqb)
+# RAO automatically analyzes your context file and generates appropriate specialists
+session_id = cqb.analyze_query_and_generate_agents(
+    "Based on our situation, what strategy should we implement?",
+    max_agents=6
+)
 
-# Run collaborative analysis
-session_id = collab_module.collaborate_on_query(
-    "How should we approach climate change mitigation in urban environments?",
-    max_agents=6,
+# All agents are now context-aware and domain-specific
+agents = cqb.get_agents(session_id)
+for agent in agents:
+    print(f"🧠 {agent.specialty} - Context: {agent.spec.context_summary[:50]}...")
+```
+
+#### 🔌 **Use with Any Module**
+```python
+# Collaboration with context-aware agents
+collab_module = AgentCollaborationModule(cqb)
+collab_session = collab_module.collaborate_on_query(
+    "Develop a comprehensive improvement strategy",
+    max_agents=5,
     collaboration_rounds=3
 )
 
-summary = collab_module.get_collaboration_summary(session_id)
-print(summary)
+# Adversarial debate with context-aware agents  
+from adversarial_debate_module import AdversarialDebateModule
+debate_module = AdversarialDebateModule(cqb)
+debate_session = debate_module.run_debate_on_query(
+    "Should we prioritize approach A or B?",
+    max_agents=7,
+    debate_rounds=3
+)
 ```
 
-#### 🆕 **Adversarial Debate Reasoning**
+### 🔄 **Backwards Compatibility**
 ```python
-from cqb_framework import initialize_cqb
-from adversarial_debate_module import AdversarialDebateModule
+# Disable RAO for standard operation
+rao_settings:
+  enabled: false  # Works exactly like v1.2
 
-# Initialize CQB  
-cqb = initialize_cqb()
-
-# Plug in adversarial debate module
-debate_module = AdversarialDebateModule(cqb)
-
-# Run adversarial analysis
-session_id = debate_module.run_debate_on_query(
-    "Should AI development be regulated by government agencies?",
-    max_agents=7,
-    debate_rounds=3,
-    position_a="FOR government regulation",
-    position_b="AGAINST government regulation"
-)
-
-summary = debate_module.get_debate_summary(session_id)
-print(summary)
+# Or no context file = automatic fallback
+# Missing cqb_framework_rao.txt = standard query-only agents
 ```
 
 ## 📁 Project Structure
@@ -123,217 +164,209 @@ central-query-brain/
 ├── README.md                         # This file
 ├── LICENSE                           # MIT License
 ├── requirements.txt                  # Python dependencies
-v1.2/
-├── config.yaml                       # Model configurations
-├── cqb_framework.py                  # 🧠 Core CQB agent generation engine
-├── collaboration_module.py           # 🤝 Collaborative reasoning orchestrator
-├── adversarial_debate_module.py      # ⚔️ Adversarial debate orchestrator
+v1.3/                                 # 🔥 NEW: RAO Implementation
+├── config.yaml                       # Enhanced with RAO settings
+├── cqb_framework.py                  # 🧠 Enhanced with RAO support
+├── cqb_context_manager.py            # 🔥 NEW: RAO context analysis
+├── collaboration_module.py           # 🤝 Enhanced with context-aware agents
+├── adversarial_debate_module.py      # ⚔️ Enhanced with context-aware agents
 ├── licenses.yaml                     # Model license registry
 ├── license_manager.py                # License compliance system
+├── cqb_framework_rao.txt             # 🔥 NEW: Your context file
 └── third_party_licenses/             # Full license texts
 examples/                             # Example scenarios and use cases
-├── techflow_crisis.py                # AI startup crisis simulation (Collaborative)
-├── medical_consultation.py           # Medical case analysis (Collaborative)
-├── security_audit_debate.py          # 🆕 Red Team vs Blue Team security audit (Adversarial)
-├── climate_policy.py                 # Policy analysis example (Collaborative)
+├── rao_examples/                     # 🔥 NEW: RAO demonstration scripts
+├── techflow_crisis.py                # AI startup crisis simulation
+├── medical_consultation.py           # Medical case analysis
+├── security_audit_debate.py          # Red Team vs Blue Team security audit
 outputs/                              # Generated analysis results
 │   └── sample_outputs/               # Example JSON outputs
 docs/                                 # Documentation
+│   ├── rao_architecture.md           # 🔥 NEW: RAO system documentation
 │   ├── architecture.md               # System architecture details
 │   ├── agent_types.md                # Agent specification guide
 │   └── api_reference.md              # Complete API documentation
-
 ```
 
-## 🎯 Reasoning Patterns & Examples
+## 🎯 RAO Examples & Use Cases
 
-### 🤝 **Collaborative Reasoning**
-*Agents work together, build on ideas, synthesize collective wisdom*
-
-#### Crisis Management
+### 🔥 **Customer Service Operations (RAO)**
 ```python
-crisis_scenario = """
-TechFlow AI startup faces simultaneous technical bias issues, 
-regulatory scrutiny, funding challenges, and talent retention 
-problems. Develop a comprehensive crisis response strategy.
-"""
+# Context file: customer_service_context.txt contains:
+# - 25 representatives, 5,000+ monthly interactions
+# - $2.1M budget, declining satisfaction scores
+# - 48-hour response times, high turnover
 
-session_id = collab_module.collaborate_on_query(crisis_scenario)
+query = "How should we improve our customer service operations?"
+
+# RAO generates context-aware specialists:
+# - Customer Experience (CX) Strategist 🧠
+# - Operations Efficiency Expert 🧠  
+# - Data Analyst specializing in Customer Service Metrics 🧠
 ```
 
-**Generated Agents**: Crisis Management Expert, AI Ethics Specialist, Regulatory Compliance Advisor, Business Strategy Consultant, Talent Retention Specialist
+### 🔥 **Medical Case Analysis (RAO)**
+```python  
+# Context file: medical_case_context.txt contains:
+# - Patient demographics, symptoms, test results
+# - Hospital capabilities, resource constraints
+# - Regulatory requirements, treatment protocols
 
-#### Medical Case Analysis
+query = "What's the differential diagnosis and treatment plan?"
+
+# RAO generates context-aware specialists:
+# - Emergency Medicine Physician 🧠
+# - Cardiologist (based on symptoms) 🧠
+# - Clinical Pharmacist (based on medications) 🧠
+```
+
+### 🔥 **Business Strategy (RAO)**
 ```python
-medical_case = """
-45-year-old presents with acute chest pain, dyspnea, and 
-diaphoresis. ECG shows ST elevation in inferior leads. 
-Develop differential diagnosis and treatment approach.
-"""
+# Context file: business_strategy_context.txt contains:
+# - Market analysis, competitor landscape  
+# - Financial constraints, growth targets
+# - Regulatory environment, compliance requirements
 
-session_id = collab_module.collaborate_on_query(medical_case)
+query = "What's our optimal market entry strategy?"
+
+# RAO generates context-aware specialists:
+# - Market Entry Strategist 🧠
+# - Regulatory Compliance Expert 🧠
+# - Financial Risk Analyst 🧠
 ```
 
-**Generated Agents**: Emergency Medicine Physician, Cardiologist, Internal Medicine Specialist, Critical Care Expert
+## 🧬 **RAO Architecture Deep Dive**
 
-### ⚔️ **Adversarial Debate Reasoning**
-*Agents split into opposing teams, argue positions, compete through superior reasoning*
+### **Context Analysis Pipeline**
+```
+📄 Context File → 🔍 Domain Analysis → 🧠 Specialist Selection → 🤖 Agent Generation
+     ↓                    ↓                      ↓                    ↓
+Domain-specific     Key concepts &        Required expertise    Context-aware agents
+   content          terminology            identification        with background
+```
 
-#### 🆕 **Security Audit (Red Team vs Blue Team)**
+### **Agent Enhancement Process**
 ```python
-security_audit = """
-Conduct adversarial security audit of autonomous drone delivery network.
-Identify critical vulnerabilities and evaluate proposed mitigations.
-"""
+# Standard Agent (v1.2)
+agent.specialty = "Business Strategist"
+agent.context_summary = ""  # No context
 
-session_id = debate_module.run_debate_on_query(
-    security_audit,
-    position_a="RED TEAM - Expose Vulnerabilities", 
-    position_b="BLUE TEAM - Defend with Mitigations"
-)
+# RAO Agent (v1.3)  
+agent.specialty = "Customer Experience (CX) Strategist"  # Context-driven
+agent.context_summary = "Working with customer service operations. Key challenges: 25-person team, 5,000+ interactions, $2.1M budget constraints."
 ```
 
-**Generated Teams**: 
-- **Red Team**: Cybersecurity Analyst, Physical Security Expert, Social Engineering Specialist
-- **Blue Team**: Security Architect, Risk Management Expert, Compliance Specialist  
-- **Judge**: Security Auditor
-
-#### Policy Analysis
+### **Integration with Social Layers**
 ```python
-policy_debate = """
-Should we prioritize Mars colonization or Earth climate solutions?
-"""
-
-session_id = debate_module.run_debate_on_query(
-    policy_debate,
-    position_a="FOR Mars colonization priority",
-    position_b="FOR Earth climate priority"
-)
+# RAO + MVSU Social Layers
+rao_config = {
+    'context_file': 'medical_cases.txt',
+    'social_layers': ['Layer_1_Synthesis', 'Layer_2_Ranking', 'Layer_3_Independent']
+}
 ```
 
-**Generated Teams**:
-- **Team A**: Aerospace Engineer, Planetary Scientist, Technology Futurist
-- **Team B**: Climate Scientist, Environmental Policy Expert, Social Justice Advocate
-- **Judge**: Strategic Policy Analyst
+## 📊 RAO vs Standard Comparison
+
+### **Query**: "How should we improve our operations?"
+
+**Standard CQB (v1.2) Generates**:
+- Generic Business Strategist
+- General Operations Expert  
+- Standard Process Analyst
+
+**RAO CQB (v1.3) with Customer Service Context Generates**:
+- Customer Experience (CX) Strategist 🧠
+- Operations Efficiency Expert specialized in service delivery 🧠
+- Data Analyst specializing in Customer Service Metrics 🧠
+
+**RAO Agent Response**:
+> *"Given your situation with **25 representatives, 5,000+ monthly interactions, and $2.1M budget**, I recommend implementing a CRM system to handle your interaction volume, with phased rollout to manage costs..."*
+
+**Standard Agent Response**:
+> *"To improve operations, consider streamlining processes, implementing better technology, and measuring performance metrics..."*
+
+**The difference is transformational!** 🚀
 
 ## 🏗️ Architecture
 
-### 🧠 **Central Hub Design**
+### 🧠 **RAO-Enhanced CQB Design**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                CQB Framework                            │
+│                CQB Framework v1.3                       │
 │  ┌─────────────────────────────────────────────────┐    │
-│  │        Dynamic Agent Generation                 │    │
-│  │  • Query Analysis                               │    │
-│  │  • Specialist Selection                         │    │
-│  │  • Dual-Model Assignment                        │    │
-│  │  • Agent Pool Creation                          │    │
+│  │     RAO Context Analysis                        │    │
+│  │  • Document Processing                          │    │
+│  │  • Domain Identification                        │    │
+│  │  • Specialist Requirements                      │    │
+│  │  • Context-Aware Agent Generation               │    │
 │  └─────────────────────────────────────────────────┘    │
 └─────────────────┬───────────────────────────────────────┘
-                  │ Agent Pool
+                  │ Context-Aware Agent Pool
       ┌───────────┴───────────┐
       │                       │
 ┌─────▼───────┐           ┌─────▼─────┐
 │Collaboration│           │Adversarial│
 │  Module     │           │  Debate   │
 │             │           │  Module   │
-│🤝 Synthesis │           │⚔️ Judgment │
+│🤝 Enhanced │           │⚔️ Enhanced│
+│with Context │           │with Context│
 └─────────────┘           └───────────┘
 ```
 
 ### Core Components
 
-1. **🧠 CQB Framework** (`cqb_framework.py`)
-   - Dynamic query analysis and agent specification
-   - Dual-model management (conservative/innovative)
-   - Agent generation and session management
+1. **🧠 CQB Framework** (`cqb_framework.py`) - Enhanced with RAO
+   - Context-aware query analysis and agent specification
+   - RAO integration with backwards compatibility
+   - Domain-specific agent generation
    - **Serves as central hub for all reasoning modules**
 
-2. **🤝 Collaboration Module** (`collaboration_module.py`)
-   - Multi-round deliberation orchestration
-   - Context building and collaborative synthesis
-   - Consensus-driven reasoning patterns
+2. **🔥 CQB Context Manager** (`cqb_context_manager.py`) - NEW
+   - Document analysis and domain identification
+   - Specialist requirement extraction
+   - Context-aware agent specification enhancement
+   - Smart filtering and relevance scoring
 
-3. **🆕 ⚔️ Adversarial Debate Module** (`adversarial_debate_module.py`)
-   - Red Team vs Blue Team orchestration
-   - Competitive reasoning with judge evaluation
-   - Confrontational analysis patterns
+3. **🤝 Collaboration Module** (`collaboration_module.py`) - Enhanced
+   - Works seamlessly with context-aware agents
+   - Enhanced collaboration with shared domain understanding
+   - Context-informed synthesis
 
-### 🔌 **Plug-in Pattern**
-Each module follows the same interface:
-```python
-# 1. Connect to CQB hub
-module = ReasoningModule(cqb_brain)
-
-# 2. Request agents for query  
-session_id = cqb_brain.analyze_query_and_generate_agents(query)
-agents = cqb_brain.get_agents(session_id)
-
-# 3. Apply unique reasoning orchestration
-result = module.orchestrate_reasoning(agents, query)
-```
-
-## 📊 Output Formats
-
-### Collaborative Output
-- **Query Analysis**: Domain classification, complexity assessment
-- **Agent Details**: Specialties, reasoning styles, model assignments  
-- **Round Transcripts**: Complete conversation history with context building
-- **Synthesis Results**: Unified expert recommendations
-
-### 🆕 **Adversarial Output**
-- **Team Assignments**: Red Team vs Blue Team with judge
-- **Debate Transcripts**: Attack/defense exchanges with escalation
-- **Judge Evaluations**: Round-by-round assessment of arguments
-- **Final Verdict**: Winning position with comprehensive reasoning
-
-## 🔧 Configuration
-
-### Model Configuration (`config.yaml`)
-
-```yaml
-conservative_model:
-  name: 'Conservative-Model-Gemma-2-9B-AWQ'
-  model_path: 'hugging-quants/gemma-2-9b-it-AWQ-INT4'
-  temperature: 0.2
-  top_p: 0.7
-  max_tokens: 1536
-  max_model_len: 8192  # Extended for longer deliberations
-
-innovative_model:
-  name: 'Innovative-Model-Qwen2.5-GPTQ'
-  model_path: 'Qwen/Qwen2.5-7B-Instruct-GPTQ-Int4'
-  temperature: 0.8
-  top_p: 0.95
-  max_tokens: 1536
-  max_model_len: 8192  # Extended for longer deliberations
-```
+4. **🆕 ⚔️ Adversarial Debate Module** (`adversarial_debate_module.py`) - Enhanced
+   - Context-aware adversarial reasoning
+   - Domain-specific debate frameworks
+   - Enhanced judge evaluation with context
 
 ## 🧪 Research Applications
 
-CQB v1.1 enables research in:
+CQB v1.3 enables research in:
 
-- **🆕 Adversarial AI Systems**: Red Team vs Blue Team reasoning patterns
-- **🆕 Modular Reasoning**: Comparison of collaborative vs competitive deliberation
+- **🔥 Retrieval-Augmented Orchestration**: Novel AI architecture for context-driven team assembly
+- **🔥 Context-Aware Multi-Agent Systems**: How document context shapes reasoning team composition
+- **🔥 Transparent Knowledge Construction**: Making AI reasoning processes visible through specialist selection
 - **Epistemic Modeling**: How knowledge emerges from different reasoning patterns
-- **Multi-Agent Coordination**: Team dynamics in cooperative vs adversarial settings
+- **Multi-Agent Coordination**: Team dynamics in context-aware vs standard agents
 - **Decision Support**: Expert system augmentation with flexible reasoning modes
-- **🆕 Security Analysis**: AI-powered red team/blue team exercises
-- **AI Safety**: Understanding emergent behaviors in different reasoning frameworks
+- **AI Safety**: Understanding emergent behaviors in context-informed reasoning frameworks
 
 ## 🚀 **Getting Started Examples**
 
-### Run Collaborative Analysis
+### Run RAO Context Analysis
 ```bash
-python examples/clinical_ddx.py
+python examples/rao_examples/test_context_analysis.py
 ```
 
-### 🆕 **Run Adversarial Debate**
+### Run Context-Aware Collaboration
 ```bash
-python examples/run_debate.py
+python examples/rao_examples/test_rao_collaboration.py
 ```
 
-### 🆕 **Run Security Audit**
+### Compare RAO vs Standard
+```bash
+python examples/rao_examples/compare_rao_standard.py
+```
+
+### 🆕 **Run Security Audit with Context**
 ```bash
 python examples/security_audit_debate.py
 ```
@@ -342,8 +375,10 @@ python examples/security_audit_debate.py
 
 We welcome contributions! Areas of interest:
 
-- **🆕 New reasoning modules** (consensus building, devil's advocate, etc.)
-- **🆕 Domain-specific orchestration patterns**
+- **🔥 New context types and domains** (medical, legal, technical, creative)
+- **🔥 Enhanced context analysis** (semantic similarity, vector embeddings)
+- **🔥 New reasoning modules** (consensus building, devil's advocate, etc.)
+- **🔥 Domain-specific orchestration patterns**
 - Enhanced evaluation metrics and benchmarks
 - Integration with external knowledge sources
 - Performance optimizations
@@ -368,65 +403,6 @@ json_data = collab_module.export_collaboration_json(session_id)
 print(json_data['license_manifest'])
 ```
 
-### 📋 **Model Registry Management**
-
-Add new models to `licenses.yaml`:
-
-```yaml
-"organization/model-name":
-  license: "License Name (e.g., Apache-2.0, MIT, Gemma Terms of Use)"
-  repo: "https://huggingface.co/organization/model-name"
-  description: "Human readable description"
-  license_file: "filename.txt"  # Optional: local license file
-```
-
-### 🚨 **Compliance Warnings**
-
-CQB will warn about unlicensed models but continue operation:
-
-```
-⚠️ Model 'new/model' not found in license registry!
-🔧 Please add it to licenses.yaml before use
-📥 Loading new-model... # Continues with warning
-```
-
-### 📁 **License File Organization**
-
-```
-central-query-brain/
-v1.2/
-├── ...other version files
-├── licenses.yaml              # Model license registry
-├── license_manager.py         # License compliance system
-└── third_party_licenses/      # Full license texts
-    ├── apache_2_0.txt
-    ├── gemma_license.txt
-    ├── mit_license.txt
-    └── ...
-```
-
-### ⚖️ **Legal Compliance Notes**
-
-- **Registry Requirement**: All models must be registered before use
-- **Redistribution**: Users must comply with original model licenses
-- **Commercial Use**: Review individual model licenses for commercial restrictions
-- **Attribution**: Full license details included in all JSON exports
-
-### 🔧 **For Developers**
-
-```python
-# Check specific model compliance
-from license_manager import validate_model, get_license_info
-
-is_compliant = validate_model("Qwen/Qwen3-8B")
-license_info = get_license_info("Qwen/Qwen3-8B")
-
-# Get complete session manifest
-manifest = cqb.get_license_manifest()
-```
-
-The license system ensures full transparency and compliance while maintaining CQB's ease of use.
-
 ## 🙏 Acknowledgments
 
 - Built on [vLLM](https://github.com/vllm-project/vllm) for efficient LLM inference
@@ -442,11 +418,12 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```bibtex
 @software{CQB,
   author = {Del Coburn},
-  title = {CQB: Central Query Brain - Modular AI Reasoning Engine},
+  title = {CQB: Central Query Brain - RAO Architecture for Context-Aware Multi-Agent Reasoning},
   year = {2025},
-  version = {1.2},
+  version = {1.3},
   institution = {University of Toronto},
-  url = {https://github.com/Baglecake/CQB}
+  url = {https://github.com/Baglecake/CQB},
+  note = {First implementation of Retrieval-Augmented Orchestration (RAO)}
 }
 ```
 
@@ -461,12 +438,14 @@ University of Toronto
 *For project-related questions, please use GitHub Issues or Discussions. For other inquiries, feel free to reach out via email.*
 
 ---
-**Built for researchers, decision-makers, and AI developers who need sophisticated multi-agent reasoning capabilities.**
+**🔥 World's first Retrieval-Augmented Orchestration (RAO) implementation**
 
-**🆕 v1.1: Now with modular reasoning patterns - collaborate or compete, your choice.**
+**Built for researchers, decision-makers, and AI developers who need sophisticated context-aware multi-agent reasoning capabilities.**
 
-**Made with ❤️ for democratizing AI access**
+**🆕 v1.3: Revolutionary RAO architecture - context shapes reasoning teams, not just responses.**
 
-**Version**: v1.2 | **Last Updated**: 2025-08-03 |
+**Made with ❤️ for democratizing AI understanding**
+
+**Version**: v1.3 | **Last Updated**: 2025-08-04 |
 
 ---
