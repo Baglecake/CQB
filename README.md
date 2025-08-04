@@ -37,7 +37,7 @@ CQB separates **agent generation** from **reasoning orchestration**, enabling:
 ## 📚 Version History
 
 ### v1.3 (CURRENT) - RAO Architecture Implementation
-- 🔥 **NEW**: Retrieval-Augmented Orchestration (RAO) - world's first implementation
+- 🔥 **NEW**: Retrieval-Augmented Orchestration (RAO) - Novel implementation
 - 🔥 **NEW**: Context-aware agent generation from uploaded documents
 - 🔥 **NEW**: File-based context system (`cqb_framework_rao.txt`)
 - 🔥 **NEW**: Domain-specific specialist selection based on document analysis
