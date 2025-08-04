@@ -6,7 +6,7 @@ Required:
 - prompting.py  
 - inference.py  
 - data.py  
-- (__init__.py)  
+- "__init__.py" 
 
 To generate, use:
 
