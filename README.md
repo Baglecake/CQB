@@ -84,7 +84,7 @@ CQB separates **agent generation** from **reasoning orchestration**, enabling:
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/central-query-brain.git
+git clone https://github.com/Baglecake/central-query-brain.git
 cd central-query-brain
 pip install -r requirements.txt
 ```
