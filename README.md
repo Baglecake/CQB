@@ -7,36 +7,50 @@
 [![vLLM](https://img.shields.io/badge/Powered%20by-vLLM-green.svg)](https://github.com/vllm-project/vllm)
 [![University of Toronto](https://img.shields.io/badge/University%20of-Toronto-003F7F.svg)](https://www.utoronto.ca/)
 [![Research](https://img.shields.io/badge/Type-Research-brightgreen.svg)](https://github.com)
-[![RAO](https://img.shields.io/badge/Architecture-RAO-red.svg)](https://github.com)
+[![EAO](https://img.shields.io/badge/Architecture-EAO-red.svg)](https://github.com)
 
 ## Overview
-**v1.3 - Retrieval-Augmented Orchestration (RAO) Architecture**  
+**v1.4 - Extraction-Augmented Orchestration (EAO) Architecture**  
 
-Central Query Brain (CQB) implements **Retrieval-Augmented Orchestration (RAO)** - a novel AI architecture that uses context to dynamically build reasoning teams rather than just inform responses. Unlike traditional RAG systems that retrieve information to enhance a single agent's answer, RAO retrieves and analyzes context to determine what kinds of experts are needed and generates a custom team of specialist agents.
+Central Query Brain (CQB) implements **Extraction-Augmented Orchestration (EAO)** - a revolutionary AI architecture that uses sophisticated document analysis to dynamically build reasoning teams. Building on RAO, EAO integrates **LangExtract** for structured entity extraction, enabling precise context understanding that drives expert team assembly.
 
-**🔥 NEW in v1.3**: **RAO Implementation** - Context-aware agent generation with file-based knowledge integration
+**🔥 NEW in v1.4**: **EAO Implementation** - LangExtract integration for sophisticated structured extraction and context-aware agent generation
 
-**Key Innovation**: True epistemic labor division with **context-driven team assembly** - the system analyzes your documents to build reasoning teams specifically suited to your domain and requirements.
+**Key Innovation**: **Extraction-Augmented Orchestration** - the system performs structured extraction on documents to identify constraints, metrics, stakeholders, and objectives, then generates specialist teams with precise contextual briefings.
 
-### 🧠 **RAO vs RAG - Comparative Difference**
+### 🧠 **EAO vs RAO vs RAG - Evolutionary Comparison**
 
-| Aspect | Traditional RAG | CQB's RAO |
-|--------|-----------------|-----------|
-| **Purpose of Retrieval** | Find facts to inform answer | Analyze context to determine expertise needed |
-| **Impact on AI** | Informs single agent response | Shapes entire reasoning team composition |
-| **User Insight** | Black box reasoning | Transparent specialist selection |
-| **Adaptability** | Static reasoning process | Dynamic team based on context |
+| Aspect | Traditional RAG | RAO (v1.3) | EAO (v1.4) |
+|--------|-----------------|-------------|-------------|
+| **Purpose of Retrieval** | Find facts to inform answer | Analyze context to determine expertise needed | Extract structured entities to drive team assembly |
+| **Context Analysis** | Semantic search | Basic keyword matching | Sophisticated structured extraction |
+| **Impact on AI** | Informs single agent response | Shapes reasoning team composition | Builds context-aware specialists with precise briefings |
+| **User Insight** | Black box reasoning | Transparent specialist selection | Transparent extraction → specialist mapping |
+| **Adaptability** | Static reasoning process | Dynamic team based on context | Dynamic team based on extracted entities |
+| **Domain Transfer** | Limited | Basic domain detection | Sophisticated cross-domain adaptation |
 
-### 🔌 **Modular Architecture**
-CQB separates **agent generation** from **reasoning orchestration**, enabling:
+### 🔌 **Enhanced Modular Architecture**
+CQB v1.4 separates **extraction**, **agent generation**, and **reasoning orchestration**, enabling:
 - **Central Hub**: `cqb_framework.py` generates context-aware experts for any query
-- **RAO Context Manager**: `cqb_context_manager.py` analyzes documents to inform team composition
+- **EAO Context Manager**: `enhanced_rao_context_manager.py` performs structured extraction using LangExtract
+- **Universal Schemas**: `universal_extraction_schemas.py` provides domain-agnostic extraction patterns
+- **vLLM Integration**: `vllm_langextract_adapter.py` enables LangExtract to use existing models
 - **Plug-in Modules**: Independent reasoning orchestrators that leverage context-aware agents
 - **Flexible Deployment**: Switch between collaboration, debate, or custom reasoning patterns seamlessly
 
 ## 📚 Version History
 
-### v1.3 (CURRENT) - RAO Architecture Implementation
+### v1.4 (CURRENT) - Extraction-Augmented Orchestration (EAO) Implementation
+- 🔥 **NEW**: Extraction-Augmented Orchestration (EAO) - Revolutionary advancement beyond RAO
+- 🔥 **NEW**: LangExtract integration for sophisticated structured extraction
+- 🔥 **NEW**: Universal extraction schemas for domain-agnostic operation
+- 🔥 **NEW**: vLLM-LangExtract adapter for seamless model integration
+- 🔥 **NEW**: Enhanced context manager with structured entity extraction
+- 🔥 **NEW**: Proven domain adaptation (business → medical → research → technical)
+- ✨ **Enhanced**: All modules now work with extraction-enhanced context-aware agents
+- 🔧 **Maintained**: Full backwards compatibility with v1.3 RAO features
+
+### v1.3 - RAO Architecture Implementation
 - 🔥 **NEW**: Retrieval-Augmented Orchestration (RAO) - Novel implementation
 - 🔥 **NEW**: Context-aware agent generation from uploaded documents
 - 🔥 **NEW**: File-based context system (`cqb_framework_rao.txt`)
@@ -64,13 +78,16 @@ CQB separates **agent generation** from **reasoning orchestration**, enabling:
 
 ## 🧠 Core Features
 
-- 🔥 **Retrieval-Augmented Orchestration (RAO)**: Novel implementation - uses context to build reasoning teams
-- 🔥 **Context-Aware Agent Generation**: Analyzes documents to determine needed expertise and creates appropriate specialists
+- 🔥 **Extraction-Augmented Orchestration (EAO)**: Revolutionary implementation - sophisticated extraction drives reasoning teams
+- 🔥 **LangExtract Integration**: Advanced structured extraction from documents using universal schemas
+- 🔥 **Domain-Agnostic Adaptation**: Proven cross-domain functionality (business, medical, research, technical)
+- 🔥 **Context-Aware Agent Generation**: Agents briefed with extracted constraints, metrics, stakeholders, objectives
+- 🔥 **Universal Extraction Schemas**: Domain-agnostic patterns for constraints, metrics, stakeholders, objectives
 - **Dynamic Agent Generation**: Analyzes queries to determine needed expertise and creates appropriate specialist agents
 - **Dual-Model Architecture**: Conservative (analytical) and innovative (creative) agents using different model configurations  
 - **🆕 Modular Reasoning Patterns**: Choose between collaborative synthesis, adversarial debate, or custom orchestration
 - **🆕 Plug-in Architecture**: Independent modules that leverage the same agent generation service
-- **Domain Agnostic**: Works across medical, business, technical, creative, security, and analytical domains
+- **Domain Agnostic**: Works across medical, business, technical, creative, security, research, and analytical domains
 - **Rich Output**: JSON export with complete conversation transcripts, agent details, and performance metrics
 
 ## 🚀 Quick Start
@@ -87,17 +104,18 @@ CQB separates **agent generation** from **reasoning orchestration**, enabling:
 git clone https://github.com/Baglecake/central-query-brain.git
 cd central-query-brain
 pip install -r requirements.txt
+pip install pydantic PyYAML  # Required for LangExtract integration
 ```
 
-### 🔥 **RAO Context-Aware Agent Generation**
+### 🔥 **EAO Extraction-Augmented Agent Generation**
 
 #### Set Up Context File
 ```bash
 # Create your context file (any domain works)
-echo "Your domain-specific context content here..." > v1.3/cqb_framework_rao.txt
+echo "Your domain-specific context content here..." > v1.4/cqb_framework_rao.txt
 ```
 
-#### Enable RAO in Config
+#### Enable EAO in Config
 ```yaml
 # config.yaml
 rao_settings:
@@ -105,31 +123,33 @@ rao_settings:
   context_filename: 'cqb_framework_rao.txt'
   max_context_length: 2000
   fallback_to_query_only: true
+  use_enhanced_analysis: true  # NEW: Enable LangExtract integration
 ```
 
-#### Context-Aware Reasoning
+#### Extraction-Augmented Reasoning
 ```python
 from cqb_framework import initialize_cqb
 from collaboration_module import AgentCollaborationModule
 
-# Initialize CQB with RAO
+# Initialize CQB with EAO
 cqb = initialize_cqb()
 
-# RAO automatically analyzes your context file and generates appropriate specialists
+# EAO automatically extracts structured entities and generates appropriate specialists
 session_id = cqb.analyze_query_and_generate_agents(
     "Based on our situation, what strategy should we implement?",
     max_agents=6
 )
 
-# All agents are now context-aware and domain-specific
+# All agents are now context-aware with structured entity briefings
 agents = cqb.get_agents(session_id)
 for agent in agents:
-    print(f"🧠 {agent.specialty} - Context: {agent.spec.context_summary[:50]}...")
+    print(f"🧠 {agent.specialty}")
+    print(f"   Context: {agent.spec.context_summary[:100]}...")
 ```
 
 #### 🔌 **Use with Any Module**
 ```python
-# Collaboration with context-aware agents
+# Collaboration with extraction-enhanced context-aware agents
 collab_module = AgentCollaborationModule(cqb)
 collab_session = collab_module.collaborate_on_query(
     "Develop a comprehensive improvement strategy",
@@ -137,7 +157,7 @@ collab_session = collab_module.collaborate_on_query(
     collaboration_rounds=3
 )
 
-# Adversarial debate with context-aware agents  
+# Adversarial debate with extraction-enhanced context-aware agents  
 from adversarial_debate_module import AdversarialDebateModule
 debate_module = AdversarialDebateModule(cqb)
 debate_session = debate_module.run_debate_on_query(
@@ -149,12 +169,14 @@ debate_session = debate_module.run_debate_on_query(
 
 ### 🔄 **Backwards Compatibility**
 ```python
-# Disable RAO for standard operation
+# Disable EAO for standard RAO operation
+rao_settings:
+  enabled: true
+  use_enhanced_analysis: false  # Uses v1.3 RAO
+
+# Disable RAO entirely for standard operation
 rao_settings:
   enabled: false  # Works exactly like v1.2
-
-# Or no context file = automatic fallback
-# Missing cqb_framework_rao.txt = standard query-only agents
 ```
 
 ## 📁 Project Structure
@@ -164,88 +186,102 @@ central-query-brain/
 ├── README.md                         # This file
 ├── LICENSE                           # MIT License
 ├── requirements.txt                  # Python dependencies
-v1.3/                                 # 🔥 NEW: RAO Implementation
-├── config.yaml                       # Enhanced with RAO settings
-├── cqb_framework.py                  # 🧠 Enhanced with RAO support
-├── cqb_context_manager.py            # 🔥 NEW: RAO context analysis
-├── collaboration_module.py           # 🤝 Enhanced with context-aware agents
-├── adversarial_debate_module.py      # ⚔️ Enhanced with context-aware agents
+v1.4/                                 # 🔥 NEW: EAO Implementation
+├── config.yaml                       # Enhanced with EAO settings
+├── cqb_framework.py                  # 🧠 Enhanced with EAO support
+├── enhanced_rao_context_manager.py   # 🔥 NEW: LangExtract-powered context analysis
+├── vllm_langextract_adapter.py       # 🔥 NEW: vLLM-LangExtract bridge
+├── universal_extraction_schemas.py   # 🔥 NEW: Domain-agnostic extraction patterns
+├── langextract_resolver.py           # 🔥 NEW: Content parsing utilities
+├── collaboration_module.py           # 🤝 Enhanced with EAO context-aware agents
+├── adversarial_debate_module.py      # ⚔️ Enhanced with EAO context-aware agents
 ├── licenses.yaml                     # Model license registry
 ├── license_manager.py                # License compliance system
-├── cqb_framework_rao.txt             # 🔥 NEW: Your context file
+├── cqb_framework_rao.txt             # Your context file
 └── third_party_licenses/             # Full license texts
 examples/                             # Example scenarios and use cases
-├── rao_examples/                     # 🔥 NEW: RAO demonstration scripts
+├── eao_examples/                     # 🔥 NEW: EAO demonstration scripts
+├── rao_examples/                     # RAO demonstration scripts
 ├── techflow_crisis.py                # AI startup crisis simulation
 ├── medical_consultation.py           # Medical case analysis
 ├── security_audit_debate.py          # Red Team vs Blue Team security audit
 outputs/                              # Generated analysis results
 │   └── sample_outputs/               # Example JSON outputs
 docs/                                 # Documentation
-│   ├── rao_architecture.md           # 🔥 NEW: RAO system documentation
+│   ├── eao_architecture.md           # 🔥 NEW: EAO system documentation
+│   ├── rao_architecture.md           # RAO system documentation
 │   ├── architecture.md               # System architecture details
 │   ├── agent_types.md                # Agent specification guide
 │   └── api_reference.md              # Complete API documentation
 ```
 
-## 🎯 RAO Examples & Use Cases
+## 🎯 EAO Examples & Use Cases
 
-### 🔥 **Customer Service Operations (RAO)**
+### 🔥 **Customer Service Operations (EAO)**
 ```python
-# Context file: customer_service_context.txt contains:
+# Context file contains operational details:
 # - 25 representatives, 5,000+ monthly interactions
 # - $2.1M budget, declining satisfaction scores
 # - 48-hour response times, high turnover
 
 query = "How should we improve our customer service operations?"
 
-# RAO generates context-aware specialists:
+# EAO extracts structured entities and generates context-aware specialists:
 # - Customer Experience (CX) Strategist 🧠
+#   Context: "25-person team, 5,000+ interactions, $2.1M budget constraints"
 # - Operations Efficiency Expert 🧠  
+#   Context: "48-hour response time issue, 35% annual turnover"
 # - Data Analyst specializing in Customer Service Metrics 🧠
+#   Context: "Current satisfaction: 3.2/5.0, cost per resolution $450"
 ```
 
-### 🔥 **Medical Case Analysis (RAO)**
+### 🔥 **Climate Research Strategy (EAO)**
 ```python  
-# Context file: medical_case_context.txt contains:
-# - Patient demographics, symptoms, test results
-# - Hospital capabilities, resource constraints
-# - Regulatory requirements, treatment protocols
+# Context file contains research details:
+# - Longitudinal study, 850K data points, 47 regions
+# - 12% yield decline in drought areas, 18% with >2°C increases
+# - $450K budget remaining, March 2025 deadline
 
-query = "What's the differential diagnosis and treatment plan?"
+query = "What should be our strategic priorities for the final research phase?"
 
-# RAO generates context-aware specialists:
-# - Emergency Medicine Physician 🧠
-# - Cardiologist (based on symptoms) 🧠
-# - Clinical Pharmacist (based on medications) 🧠
+# EAO extracts structured entities and generates context-aware specialists:
+# - Climate Scientist specializing in agricultural impacts 🧠
+#   Context: "12% yield decline drought data, 18% reduction >2°C threshold"
+# - Agricultural Economist specializing in yield forecasting 🧠
+#   Context: "$450K budget remaining, March 2025 deadline"
+# - Research Analyst specializing in agricultural data analysis 🧠
+#   Context: "850K data points, 47 regions, longitudinal study design"
 ```
 
-### 🔥 **Business Strategy (RAO)**
+### 🔥 **Medical Case Analysis (EAO)**
 ```python
-# Context file: business_strategy_context.txt contains:
-# - Market analysis, competitor landscape  
-# - Financial constraints, growth targets
-# - Regulatory environment, compliance requirements
+# Context file contains clinical details:
+# - 65-year-old patient, chest pain, elevated troponin
+# - ST elevation ECG, blood pressure 180/95
+# - Hospital protocols, door-to-balloon targets
 
-query = "What's our optimal market entry strategy?"
+query = "What's the optimal treatment approach for this patient?"
 
-# RAO generates context-aware specialists:
-# - Market Entry Strategist 🧠
-# - Regulatory Compliance Expert 🧠
-# - Financial Risk Analyst 🧠
+# EAO extracts structured entities and generates context-aware specialists:
+# - Emergency Medicine Physician 🧠
+#   Context: "ST elevation ECG, troponin 12.5 ng/mL, 65-year-old male"
+# - Interventional Cardiologist 🧠
+#   Context: "Door-to-balloon target <90 minutes, cath lab available"
+# - Critical Care Specialist 🧠
+#   Context: "BP 180/95, post-procedure monitoring requirements"
 ```
 
-## 🧬 **RAO Architecture Deep Dive**
+## 🧬 **EAO Architecture Deep Dive**
 
-### **Context Analysis Pipeline**
+### **Extraction-Augmented Orchestration Pipeline**
 ```
-📄 Context File → 🔍 Domain Analysis → 🧠 Specialist Selection → 🤖 Agent Generation
-     ↓                    ↓                      ↓                    ↓
-Domain-specific     Key concepts &        Required expertise    Context-aware agents
-   content          terminology            identification        with background
+📄 Context File → 🔍 LangExtract Analysis → 📊 Structured Entities → 🧠 Specialist Mapping → 🤖 Context-Aware Agents
+     ↓                    ↓                        ↓                      ↓                     ↓
+Domain-specific     Universal schema        Constraints, metrics,    Required expertise    Agents with detailed
+   content           extraction            stakeholders, objectives   identification        contextual briefings
 ```
 
-### **Agent Enhancement Process**
+### **Enhanced Agent Briefing Process**
 ```python
 # Standard Agent (v1.2)
 agent.specialty = "Business Strategist"
@@ -253,19 +289,18 @@ agent.context_summary = ""  # No context
 
 # RAO Agent (v1.3)  
 agent.specialty = "Customer Experience (CX) Strategist"  # Context-driven
-agent.context_summary = "Working with customer service operations. Key challenges: 25-person team, 5,000+ interactions, $2.1M budget constraints."
+agent.context_summary = "Working with customer service operations."
+
+# EAO Agent (v1.4)
+agent.specialty = "Customer Experience (CX) Strategist"  # Extraction-driven
+agent.context_summary = """Working with customer service operations. 
+Key constraints: $2.1M annual budget, 6-month implementation window.
+Metrics: 3.2/5.0 satisfaction, 48-hour response time, 35% turnover.
+Stakeholders: 25 representatives, 5,000+ monthly customer interactions.
+Objectives: Improve satisfaction to 4.0+, reduce costs by 20%."""
 ```
 
-### **Integration with Social Layers**
-```python
-# RAO + MVSU Social Layers
-rao_config = {
-    'context_file': 'medical_cases.txt',
-    'social_layers': ['Layer_1_Synthesis', 'Layer_2_Ranking', 'Layer_3_Independent']
-}
-```
-
-## 📊 RAO vs Standard Comparison
+## 📊 EAO vs RAO vs Standard Comparison
 
 ### **Query**: "How should we improve our operations?"
 
@@ -274,34 +309,36 @@ rao_config = {
 - General Operations Expert  
 - Standard Process Analyst
 
-**RAO CQB (v1.3) with Customer Service Context Generates**:
+**RAO CQB (v1.3) with Context Generates**:
+- Customer Experience (CX) Strategist 🧠
+- Operations Efficiency Expert 🧠
+- Data Analyst specializing in Customer Service Metrics 🧠
+
+**EAO CQB (v1.4) with Extracted Entities Generates**:
 - Customer Experience (CX) Strategist 🧠
 - Operations Efficiency Expert specialized in service delivery 🧠
 - Data Analyst specializing in Customer Service Metrics 🧠
 
-**RAO Agent Response**:
-> *"Given your situation with **25 representatives, 5,000+ monthly interactions, and $2.1M budget**, I recommend implementing a CRM system to handle your interaction volume, with phased rollout to manage costs..."*
-
-**Standard Agent Response**:
-> *"To improve operations, consider streamlining processes, implementing better technology, and measuring performance metrics..."*
+**EAO Agent Response**:
+> *"Given the extracted constraints of **$2.1M annual budget** and **6-month implementation window**, current metrics showing **3.2/5.0 satisfaction** and **48-hour response times**, and stakeholder context of **25 representatives handling 5,000+ monthly interactions**, I recommend a phased CRM implementation prioritizing automated response routing for routine inquiries, which should reduce response times to under 24 hours while staying within budget..."*
 
 **The difference is transformational!** 🚀
 
 ## 🏗️ Architecture
 
-### 🧠 **RAO-Enhanced CQB Design**
+### 🧠 **EAO-Enhanced CQB Design**
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                CQB Framework v1.3                       │
+│                CQB Framework v1.4                       │
 │  ┌─────────────────────────────────────────────────┐    │
-│  │     RAO Context Analysis                        │    │
-│  │  • Document Processing                          │    │
-│  │  • Domain Identification                        │    │
-│  │  • Specialist Requirements                      │    │
+│  │     EAO Extraction-Augmented Analysis           │    │
+│  │  • LangExtract Integration                      │    │
+│  │  • Universal Schema Processing                  │    │
+│  │  • Structured Entity Extraction                 │    │
 │  │  • Context-Aware Agent Generation               │    │
 │  └─────────────────────────────────────────────────┘    │
 └─────────────────┬───────────────────────────────────────┘
-                  │ Context-Aware Agent Pool
+                  │ Extraction-Enhanced Agent Pool
       ┌───────────┴───────────┐
       │                       │
 ┌─────▼───────┐           ┌─────▼──────┐
@@ -309,79 +346,93 @@ rao_config = {
 │  Module     │           │  Debate    │
 │             │           │  Module    │
 │🤝 Enhanced  │           │⚔️ Enhanced  │
-│with Context │           │with Context│
+│with EAO     │           │with EAO    │
 └─────────────┘           └────────────┘
 ```
 
 ### Core Components
 
-1. **🧠 CQB Framework** (`cqb_framework.py`) - Enhanced with RAO
-   - Context-aware query analysis and agent specification
-   - RAO integration with backwards compatibility
-   - Domain-specific agent generation
+1. **🧠 CQB Framework** (`cqb_framework.py`) - Enhanced with EAO
+   - Extraction-augmented query analysis and agent specification
+   - EAO integration with RAO backwards compatibility
+   - LangExtract-powered domain-specific agent generation
    - **Serves as central hub for all reasoning modules**
 
-2. **🔥 CQB Context Manager** (`cqb_context_manager.py`) - NEW
-   - Document analysis and domain identification
-   - Specialist requirement extraction
-   - Context-aware agent specification enhancement
-   - Smart filtering and relevance scoring
+2. **🔥 Enhanced RAO Context Manager** (`enhanced_rao_context_manager.py`) - NEW
+   - LangExtract integration for sophisticated document analysis
+   - Universal schema-based entity extraction
+   - Structured context-aware agent specification enhancement
+   - Smart constraint, metric, and stakeholder identification
 
-3. **🤝 Collaboration Module** (`collaboration_module.py`) - Enhanced
-   - Works seamlessly with context-aware agents
-   - Enhanced collaboration with shared domain understanding
-   - Context-informed synthesis
+3. **🔥 vLLM-LangExtract Adapter** (`vllm_langextract_adapter.py`) - NEW
+   - Seamless integration allowing LangExtract to use existing vLLM models
+   - Zero additional GPU memory overhead
+   - Production-ready error handling and fallbacks
 
-4. **🆕 ⚔️ Adversarial Debate Module** (`adversarial_debate_module.py`) - Enhanced
-   - Context-aware adversarial reasoning
-   - Domain-specific debate frameworks
-   - Enhanced judge evaluation with context
+4. **🔥 Universal Extraction Schemas** (`universal_extraction_schemas.py`) - NEW
+   - Domain-agnostic extraction patterns for any field
+   - Constraint, metric, stakeholder, and objective identification
+   - Cross-domain adaptation capabilities
+
+5. **🤝 Collaboration Module** (`collaboration_module.py`) - Enhanced
+   - Works seamlessly with extraction-enhanced context-aware agents
+   - Enhanced collaboration with structured entity understanding
+   - Context-informed synthesis based on extracted constraints
+
+6. **⚔️ Adversarial Debate Module** (`adversarial_debate_module.py`) - Enhanced
+   - Extraction-enhanced context-aware adversarial reasoning
+   - Domain-specific debate frameworks with entity grounding
+   - Enhanced judge evaluation with structured context
 
 ## 🧪 Research Applications
 
-CQB v1.3 enables research in:
+CQB v1.4 enables research in:
 
-- **🔥 Retrieval-Augmented Orchestration**: Novel AI architecture for context-driven team assembly
-- **🔥 Context-Aware Multi-Agent Systems**: How document context shapes reasoning team composition
-- **🔥 Transparent Knowledge Construction**: Making AI reasoning processes visible through specialist selection
-- **Epistemic Modeling**: How knowledge emerges from different reasoning patterns
-- **Multi-Agent Coordination**: Team dynamics in context-aware vs standard agents
-- **Decision Support**: Expert system augmentation with flexible reasoning modes
-- **AI Safety**: Understanding emergent behaviors in context-informed reasoning frameworks
+- **🔥 Extraction-Augmented Orchestration**: Revolutionary AI architecture for structured extraction-driven team assembly
+- **🔥 Cross-Domain AI Adaptation**: How structured extraction enables seamless domain transfer
+- **🔥 Context-Aware Multi-Agent Systems**: Impact of structured entity extraction on reasoning team composition
+- **🔥 Transparent Knowledge Construction**: Making AI reasoning processes visible through extraction → specialist mapping
+- **🔥 Universal Extraction Schemas**: Domain-agnostic patterns for organizational context understanding
+- **Epistemic Modeling**: How knowledge emerges from different reasoning patterns enhanced with structured context
+- **Multi-Agent Coordination**: Team dynamics in extraction-enhanced vs standard agents
+- **Decision Support**: Expert system augmentation with structured context understanding
+- **AI Safety**: Understanding emergent behaviors in extraction-informed reasoning frameworks
 
 ## 🚀 **Getting Started Examples**
 
-### Run RAO Context Analysis
+### Run EAO Context Analysis
 ```bash
-python examples/rao_examples/test_context_analysis.py
+python examples/eao_examples/test_extraction_analysis.py
 ```
 
-### Run Context-Aware Collaboration
+### Run Extraction-Augmented Collaboration
 ```bash
-python examples/rao_examples/test_rao_collaboration.py
+python examples/eao_examples/test_eao_collaboration.py
 ```
 
-### Compare RAO vs Standard
+### Compare EAO vs RAO vs Standard
 ```bash
-python examples/rao_examples/compare_rao_standard.py
+python examples/eao_examples/compare_eao_rao_standard.py
 ```
 
-### 🆕 **Run Security Audit with Context**
+### Test Cross-Domain Adaptation
 ```bash
-python examples/security_audit_debate.py
+python examples/eao_examples/test_domain_adaptation.py
 ```
 
 ## 🤝 Contributing
 
 We welcome contributions! Areas of interest:
 
-- **🔥 New context types and domains** (medical, legal, technical, creative)
-- **🔥 Enhanced context analysis** (semantic similarity, vector embeddings)
-- **🔥 New reasoning modules** (consensus building, devil's advocate, etc.)
-- **🔥 Domain-specific orchestration patterns**
+- **🔥 Enhanced extraction schemas** (legal, creative, scientific, technical domains)
+- **🔥 Advanced context analysis** (semantic similarity, vector embeddings, graph extraction)
+- **🔥 New reasoning modules** (consensus building, devil's advocate, expert panels)
+- **🔥 Domain-specific orchestration patterns** (medical rounds, research committees, technical reviews)
+- **🔥 Cross-domain evaluation metrics** (adaptation quality, extraction accuracy)
 - Enhanced evaluation metrics and benchmarks
 - Integration with external knowledge sources
 - Performance optimizations
+- Multi-modal context support (documents, images, data)
 
 See `CONTRIBUTING.md` for guidelines.
 
@@ -406,6 +457,7 @@ print(json_data['license_manifest'])
 ## 🙏 Acknowledgments
 
 - Built on [vLLM](https://github.com/vllm-project/vllm) for efficient LLM inference
+- Integrates [LangExtract](https://github.com/google/langextract) for sophisticated structured extraction
 - Inspired by research in collective intelligence and epistemic democracy
 - Thanks to the open-source AI community for model development
 - University of Toronto for supporting open research initiatives
@@ -418,12 +470,12 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```bibtex
 @software{CQB,
   author = {Del Coburn},
-  title = {CQB: Central Query Brain - RAO Architecture for Context-Aware Multi-Agent Reasoning},
+  title = {CQB: Central Query Brain - EAO Architecture for Extraction-Augmented Multi-Agent Reasoning},
   year = {2025},
-  version = {1.3},
+  version = {1.4},
   institution = {University of Toronto},
   url = {https://github.com/Baglecake/CQB},
-  note = {First implementation of Retrieval-Augmented Orchestration (RAO)}
+  note = {First implementation of Extraction-Augmented Orchestration (EAO)}
 }
 ```
 
@@ -438,14 +490,14 @@ University of Toronto
 *For project-related questions, please use GitHub Issues or Discussions. For other inquiries, feel free to reach out via email.*
 
 ---
-**🔥 World's first Retrieval-Augmented Orchestration (RAO) implementation**
+**🔥 World's first Extraction-Augmented Orchestration (EAO) implementation**
 
 **Built for researchers, decision-makers, and AI developers who need sophisticated context-aware multi-agent reasoning capabilities.**
 
-**🆕 v1.3: Revolutionary RAO architecture - context shapes reasoning teams, not just responses.**
+**🆕 v1.4: Revolutionary EAO architecture - structured extraction drives reasoning team assembly.**
 
 **Made with ❤️ for democratizing AI understanding**
 
-**Version**: v1.3 | **Last Updated**: 2025-08-04 |
+**Version**: v1.4 | **Last Updated**: 2025-08-04 |
 
 ---
