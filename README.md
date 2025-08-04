@@ -201,6 +201,7 @@ v1.4/                                 # 🔥 NEW: EAO Implementation
 ├── licenses.yaml                     # Model license registry
 ├── license_manager.py                # License compliance system
 ├── cqb_framework_rao.txt             # Your context file
+├── langextract/                      # LangExtract components and component generation snippet
 └── third_party_licenses/             # Full license texts
 examples/                             # Example scenarios and use cases
 ├── eao_examples/                     # 🔥 NEW: EAO demonstration scripts
