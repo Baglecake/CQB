@@ -12,9 +12,9 @@
 ## Overview
 **v1.4 - Extraction-Augmented Orchestration (EAO) Architecture**  
 
-Central Query Brain (CQB) implements **Extraction-Augmented Orchestration (EAO)** - a revolutionary AI architecture that uses sophisticated document analysis to dynamically build reasoning teams. Building on RAO, EAO integrates **LangExtract** for structured entity extraction, enabling precise context understanding that drives expert team assembly.
+Central Query Brain (CQB) implements **Extraction-Augmented Orchestration (EAO)** - a revolutionary AI architecture that uses sophisticated document analysis to dynamically build reasoning teams. Building on RAO, EAO integrates **Google's LangExtract** ([github.com/google/langextract](https://github.com/google/langextract)) for structured entity extraction, enabling precise context understanding that drives expert team assembly.
 
-**🔥 NEW in v1.4**: **EAO Implementation** - LangExtract integration for sophisticated structured extraction and context-aware agent generation
+**🔥 NEW in v1.4**: **EAO Implementation** - Integration of Google's LangExtract for sophisticated structured extraction and context-aware agent generation
 
 **Key Innovation**: **Extraction-Augmented Orchestration** - the system performs structured extraction on documents to identify constraints, metrics, stakeholders, and objectives, then generates specialist teams with precise contextual briefings.
 
@@ -79,7 +79,7 @@ CQB v1.4 separates **extraction**, **agent generation**, and **reasoning orchest
 ## 🧠 Core Features
 
 - 🔥 **Extraction-Augmented Orchestration (EAO)**: Revolutionary implementation - sophisticated extraction drives reasoning teams
-- 🔥 **LangExtract Integration**: Advanced structured extraction from documents using universal schemas
+- 🔥 **Google LangExtract Integration**: Advanced structured extraction from documents using adapted LangExtract components
 - 🔥 **Domain-Agnostic Adaptation**: Proven cross-domain functionality (business, medical, research, technical)
 - 🔥 **Context-Aware Agent Generation**: Agents briefed with extracted constraints, metrics, stakeholders, objectives
 - 🔥 **Universal Extraction Schemas**: Domain-agnostic patterns for constraints, metrics, stakeholders, objectives
@@ -105,6 +105,9 @@ git clone https://github.com/Baglecake/central-query-brain.git
 cd central-query-brain
 pip install -r requirements.txt
 pip install pydantic PyYAML  # Required for LangExtract integration
+
+# Note: CQB includes adapted LangExtract components - no separate installation needed
+# Original LangExtract: https://github.com/google/langextract
 ```
 
 ### 🔥 **EAO Extraction-Augmented Agent Generation**
@@ -190,9 +193,9 @@ v1.4/                                 # 🔥 NEW: EAO Implementation
 ├── config.yaml                       # Enhanced with EAO settings
 ├── cqb_framework.py                  # 🧠 Enhanced with EAO support
 ├── enhanced_rao_context_manager.py   # 🔥 NEW: LangExtract-powered context analysis
-├── vllm_langextract_adapter.py       # 🔥 NEW: vLLM-LangExtract bridge
-├── universal_extraction_schemas.py   # 🔥 NEW: Domain-agnostic extraction patterns
-├── langextract_resolver.py           # 🔥 NEW: Content parsing utilities
+├── vllm_langextract_adapter.py       # 🔥 NEW: vLLM-LangExtract bridge (adapted components)
+├── universal_extraction_schemas.py   # 🔥 NEW: Domain-agnostic extraction patterns  
+├── langextract_resolver.py           # 🔥 NEW: Content parsing utilities (adapted components)
 ├── collaboration_module.py           # 🤝 Enhanced with EAO context-aware agents
 ├── adversarial_debate_module.py      # ⚔️ Enhanced with EAO context-aware agents
 ├── licenses.yaml                     # Model license registry
@@ -457,10 +460,34 @@ print(json_data['license_manifest'])
 ## 🙏 Acknowledgments
 
 - Built on [vLLM](https://github.com/vllm-project/vllm) for efficient LLM inference
-- Integrates [LangExtract](https://github.com/google/langextract) for sophisticated structured extraction
+- **Integrates Google's LangExtract** ([github.com/google/langextract](https://github.com/google/langextract)) for sophisticated structured extraction
+  - Components adapted: inference patterns, data structures, prompting templates, and schema validation
+  - Licensed under Apache 2.0 License
+  - Special thanks to the Google Research team for developing this powerful extraction framework
 - Inspired by research in collective intelligence and epistemic democracy
 - Thanks to the open-source AI community for model development
 - University of Toronto for supporting open research initiatives
+
+## 📋 LangExtract Integration Details
+
+CQB v1.4 adapts core components from Google's LangExtract to enable structured extraction with vLLM models:
+
+### **Adapted Components:**
+- **Inference Architecture**: Adapted `BaseLanguageModel` interface to work with vLLM
+- **Data Structures**: Utilized `Extraction`, `ExampleData`, and schema classes
+- **Prompting System**: Adapted few-shot prompting templates for entity extraction
+- **Schema Validation**: Integrated structured output validation
+
+### **CQB Innovations:**
+- **vLLM Integration**: Custom adapter allowing LangExtract to use local vLLM models
+- **Universal Schemas**: Domain-agnostic extraction patterns for organizational contexts
+- **Agent Generation**: Novel application of extraction results to drive AI team assembly
+- **Context-Aware Orchestration**: First implementation of extraction-driven reasoning team composition
+
+### **License Compatibility:**
+- LangExtract: Apache 2.0 License (compatible with CQB's MIT License)
+- All adaptations maintain original license requirements
+- Full attribution preserved in source code headers
 
 ## 📄 License & Attribution
 
@@ -475,7 +502,15 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
   version = {1.4},
   institution = {University of Toronto},
   url = {https://github.com/Baglecake/CQB},
-  note = {First implementation of Extraction-Augmented Orchestration (EAO)}
+  note = {First implementation of Extraction-Augmented Orchestration (EAO). Integrates Google's LangExtract.}
+}
+
+@software{LangExtract,
+  author = {Google Research},
+  title = {LangExtract: Structured Information Extraction with LLMs},
+  year = {2025},
+  url = {https://github.com/google/langextract},
+  note = {Sophisticated structured extraction framework adapted in CQB v1.4}
 }
 ```
 
